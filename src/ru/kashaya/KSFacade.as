@@ -6,7 +6,6 @@ package ru.kashaya {
 
         public static var instance : KSFacade = new KSFacade();
 
-
         public function KSFacade() {
         }
 
