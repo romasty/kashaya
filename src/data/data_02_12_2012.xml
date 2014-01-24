@@ -1,0 +1,228 @@
+<data>
+
+
+    <item id="about" type="text">
+        <title color="c1" color2="sc1">Обо мне</title>
+        <body>[br/]Ольга Кравцова, дизайнер.[br/][br/]Образование: ГПИ МЭИ, "Промышленный дизайн".[br/][br/]Направления деятельности:[br/]-Иллюстрация[br/]-Промышленный дизайн[br/]-Графический дизайн.[br/]
+        </body>
+    </item>
+
+
+    <item id="portfolio" type="group">
+
+        <title color="c2" color2="sc2">Портфолио</title>
+
+
+        <item id="cg" type="gallery">
+            <title color="c1" color2="sc1">Компьютерная[br/]графика</title>
+
+            <item id="0" type="pic" src="coffee_Fairy_Wbig.jpg" preview="coffee_Fairy_Wsmall.jpg">
+                <title>Кофейная фея</title>
+            </item>
+            <item id="1" type="pic" src="Autumn_W_big.jpg" preview="Autumn_W_small.jpg">
+                <title>Осень, для обложки сборника стихотворений</title>
+            </item>
+            <item id="2" type="pic" src="mermaid_W_big.jpg" preview="mermaid_W_small.jpg">
+                <title>Underwater gift</title>
+            </item>
+            <item id="3" type="pic" src="elf_W.jpg" preview="elf_W_small.jpg">
+                <title>Темный эльф</title>
+            </item>
+            <item id="4" type="pic" src="card_W.jpg" preview="card_W_small.jpg">
+                <title>Открытка к юбилею</title>
+            </item>
+            <item id="5" type="pic" src="illustr/ice_latte2.jpg" preview="illustr/ice_latte2_small.jpg">
+                <title>Кофе со льдом; вектор </title>
+            </item>
+            <item id="6" type="pic" src="illustr/hunnW.jpg" preview="illustr/hunnW_small.jpg">
+                <title>Гунн, иллюстрация к учебнику истории</title>
+            </item>
+            <item id="7" type="pic" src="illustr/catW.jpg" preview="illustr/catW_small.jpg">
+                <title>Кот; вектор</title>
+            </item>
+            <item id="8" type="pic" src="illustr/perunW.jpg" preview="illustr/perunW_small.jpg">
+                <title>Перун, серия *Славянские боги*; вектор</title>
+            </item>
+            <item id="9" type="pic" src="illustr/fairyW.jpg" preview="illustr/fairyW_small.jpg">
+                <title>Фэйри</title>
+            </item>
+            <item id="10" type="pic" src="illustr/catsW.jpg" preview="illustr/catsW_small.jpg">
+                <title>Котики</title>
+            </item>
+            <item id="11" type="pic" src="illustr/apolloW.jpg" preview="illustr/apolloW_small.jpg">
+                <title>Голова Аполлона; вектор</title>
+            </item>
+            <item id="12" type="pic" src="illustr/zhukW.jpg" preview="illustr/zhukW_small.jpg">
+                <title>Жук</title>
+            </item>
+            <item id="13" type="pic" src="techd/foodW.jpg" preview="techd/foodW_small.jpg">
+                <title>Еда; вектор</title>
+            </item>
+            <item id="14" type="pic" src="techd/muzinstW.jpg" preview="techd/muzinstW_small.jpg">
+                <title>Музыкальные инструменты; вектор</title>
+            </item>
+            <item id="15" type="pic" src="techd/setapW.jpg" preview="techd/setapW_small.jpg">
+                <title>Комплект загрузочных картинок к диску; вектор</title>
+            </item>
+            <item id="16" type="pic" src="techd/shW.jpg" preview="techd/shW_small.jpg">
+                <title>Иконки для учебника Географии; вектор</title>
+            </item>
+        </item>
+
+
+
+
+
+        <item id="pics" type="gallery">
+            <title color="c2" color2="sc1">Рисунки</title>
+
+            <item id="0" type="pic" src="Dune_W.jpg" preview="Dune_W_small.jpg">
+                <title>Dune by Dior; акварель</title>
+            </item>
+            <item id="1" type="pic" src="shoes_W.jpg" preview="shoes_W_small.jpg">
+                <title>Туфли; маркеры</title>
+            </item>
+            <item id="2" type="pic" src="white_orchid_W.jpg" preview="white_orchid_W_small.jpg">
+                <title>Белые орхидеи; карандаши, черный маркер</title>
+            </item>
+
+            <item id="3" type="pic" src="givenchy_W_big.jpg" preview="givenchy_W_small.jpg">
+                <title>Givenchy inspiration; акварель</title>
+            </item>
+            <item id="4" type="pic" src="PeachesWbig.jpg" preview="PeachesW_small.jpg">
+                <title>Персики; карандаши, черный маркер</title>
+            </item>
+            <item id="5" type="pic" src="aqua/flakonW.jpg" preview="aqua/flakonW_small.jpg">
+                <title>Свет в стекле; акварель</title>
+            </item>
+            <item id="6" type="pic" src="aqua/orchidsW.jpg" preview="aqua/orchidsW_small.jpg">
+                <title>Орхидеи; акварель</title>
+            </item>
+            <item id="7" type="pic" src="aqua/shoesW.jpg" preview="aqua/shoesW_small.jpg">
+                <title>Туфли; акварель</title>
+            </item>
+        </item>
+
+
+
+        <item id="promdesign" type="gallery">
+            <title color="c5" color2="sc1">Промышленный[br/]дизайн</title>
+
+            <item id="1" type="pic" src="promd/spaW.jpg" preview="promd/spaW_small.jpg">
+                <title>Проект Спа капсулы для домашнего использования</title>
+            </item>
+            <item id="2" type="pic" src="promd/midoriW.jpg" preview="promd/midoriW_small.jpg">
+                <title>Чайный сервиз *Мидори*</title>
+            </item>
+            <item id="3" type="pic" src="pack/midnightW.jpg" preview="pack/midnightW_small.jpg">
+                <title>Упаковка для туалетной воды и духов *Midnight*</title>
+            </item>
+            <item id="4" type="pic" src="pack/vdW.jpg" preview="pack/vdW_small.jpg">
+                <title>Концепт банной серии и парфюмерной упаковки *Vanilla Dreams*</title>
+            </item>
+            <item id="5" type="pic" src="promd/mebW.jpg" preview="promd/mebW_small.jpg">
+                <title>Мебель для кафе *Цукат*</title>
+            </item>
+            <item id="6" type="pic" src="promd/podvesW.jpg" preview="promd/podvesW_small.jpg">
+                <title>Эскиз комплекта украшений</title>
+            </item>
+        </item>
+
+
+        <item id="polygraphic" type="gallery">
+            <title color="c4" color2="sc1">Полиграфия</title>
+            <item id="0" type="pic" src="style/zabotaW.jpg" preview="style/zabotaW_small.jpg">
+                <title>Разработка логотипа для ветеринарной клиники *Забота*, варианты размещения лого на визитке
+                </title>
+            </item>
+            <item id="1" type="pic" src="polygraphia/Paradise_otkritki_1.jpg"
+                  preview="polygraphia/Paradise_otkritki_1_Small.jpg">
+                <title>Подарочные сертификаты для салона красоты</title>
+            </item>
+            <item id="2" type="pic" src="polygraphia/Geo_oblW.jpg" preview="polygraphia/Geo_oblW_small.jpg">
+                <title>Обложка для диска-интерактивный учебник географии</title>
+            </item>
+            <item id="3" type="pic" src="polygraphia/Paradise_visitki_klient.jpg"
+                  preview="polygraphia/Paradise_visitki_klient_small.jpg">
+                <title>Визитки клиента для салона красоты</title>
+            </item>
+            <item id="4" type="pic" src="style/vizcomW.jpg" preview="style/vizcomW_small.jpg">
+                <title></title>
+            </item>
+            <item id="5" type="pic" src="polygraphia/wedding_bouklet_W.jpg"
+                  preview="polygraphia/wedding_bouklet_W_small.jpg">
+                <title>Лифлет для ювелирного магазина</title>
+            </item>
+            <item id="6" type="pic" src="polygraphia/oblozhkaW.jpg" preview="polygraphia/oblozhkaW_small.jpg">
+                <title>Варианты обложки для диска с иллюстрацией</title>
+            </item>
+            <item id="7" type="pic" src="style/tsukatW.jpg" preview="style/tsukatW_small.jpg">
+                <title></title>
+            </item>
+            <item id="8" type="pic" src="polygraphia/MenuW.jpg" preview="polygraphia/MenuW_small.jpg">
+                <title>Разработка дизайна спецпредложения дла кафе, включающая ретушь и цветокоррекцию фотографий
+                </title>
+            </item>
+
+        </item>
+
+
+        <item id="sketches" type="gallery">
+            <title color="c3" color2="sc1">Наброски</title>
+            <item id="0" type="pic" src="sketches/spascetchW.jpg" preview="sketches/spascetchW_small.jpg">
+                <title>Скетчи к СПА капсуле, фломастеры Copic</title>
+            </item>
+            <item id="1" type="pic" src="sketches/mantikoraW.jpg" preview="sketches/mantikoraW_small.jpg">
+                <title>Мантикора, карандаш</title>
+            </item>
+        </item>
+
+
+        <!--update-->
+
+        <!--<item id="6" type="pic" src="card_W.jpg" preview="card_W_small.jpg">
+            <title>Открытка к юбилею</title>
+        </item>
+        <item id="6" type="pic" src="mermaid_W.jpg" preview="mermaid_W_small.jpg">
+            <title>Underwater gift</title>
+        </item>
+        <item id="6" type="pic" src="elf_W.jpg" preview="elf_W_small.jpg">
+            <title>Темный эльф</title>
+        </item>-->
+
+
+        <!--<item id="6" type="pic" src="Dune_W.jpg" preview="Dune_W_small.jpg">
+            <title>Dune by Dior; акварель</title>
+        </item>
+
+        <item id="6" type="pic" src="givenchy_W_big.jpg" preview="givenchy_W_small.jpg">
+            <title>Givenchy inspiration; акварель</title>
+        </item>
+
+        <item id="6" type="pic" src="PeachesWbig.jpg" preview="PeachesW_small.jpg">
+            <title>Персики; карандаши, черный маркер</title>
+        </item>
+        <item id="6" type="pic" src="shoes_W.jpg" preview="shoes_W_small.jpg">
+            <title>Туфли; маркеры</title>
+        </item>
+        <item id="6" type="pic" src="white_orchid_W.jpg" preview="white_orchid_W_small.jpg">
+            <title>Белые орхидеи; карандаши, черный маркер</title>
+        </item>-->
+
+
+    </item>
+
+
+    <item id="blog" type="link">
+        <title color="c4" color2="sc4">Блог</title>
+        <body></body>
+    </item>
+
+
+    <item id="contacts" type="text">
+        <title color="c4" color2="sc4">Контакты</title>
+        <body>[br/] e-mail:[br/] kravtsova_ok@mail.ru</body>
+    </item>
+
+
+</data>

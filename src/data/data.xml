@@ -1,0 +1,222 @@
+<?xml version="1.0"?>
+<data>
+
+
+    <item id="about" type="text">
+
+        <menu>
+            <btn locale="RU" skinClass="aboutSkinBtn_RU"/>
+            <btn locale="EN" skinClass="aboutSkinBtn_EN"/>
+        </menu>
+
+        <title>Обо мне</title>
+
+            <body>[br/]Ольга Кравцова, дизайнер.[br/][br/]Образование: ГПИ МЭИ, "Промышленный дизайн".[br/][br/]Направления
+                деятельности:[br/]-Иллюстрация[br/]-Промышленный дизайн[br/]-Графический дизайн.[br/]
+            </body>
+    </item>
+
+
+    <item id="cg" type="gallery">
+        <title>Компьютерная[br/]графика</title>
+
+        <menu>
+            <btn locale="RU" skinClass="cgArtSkinBtn_RU"/>
+            <btn locale="EN" skinClass="cgArtSkinBtn_EN"/>
+        </menu>
+
+        <content type="gallery">
+            <item id="0" type="pic" src="DragonDwarfW_big.jpg" preview="DragonDwarfW_small.jpg">
+                <title>О любви к пиву</title>
+            </item>
+            <item id="1" type="pic" src="troll_W_big.jpg" preview="troll_W_small.jpg">
+                <title>Болотный тролль</title>
+            </item>
+            <item id="2" type="pic" src="coffee_Fairy_Wbig.jpg" preview="coffee_Fairy_Wsmall.jpg">
+                <title>Кофейная фея</title>
+            </item>
+            <item id="3" type="pic" src="Autumn_W_big.jpg" preview="Autumn_W_small.jpg">
+                <title>Осень, для обложки сборника стихотворений</title>
+            </item>
+            <item id="4" type="pic" src="mermaid_W_big.jpg" preview="mermaid_W_small.jpg">
+                <title>Underwater gift</title>
+            </item>
+            <item id="5" type="pic" src="elf_W.jpg" preview="elf_W_small.jpg">
+                <title>Темный эльф</title>
+            </item>
+            <item id="6" type="pic" src="card_W.jpg" preview="card_W_small.jpg">
+                <title>Открытка к юбилею</title>
+            </item>
+            <item id="7" type="pic" src="ice_latte2.jpg" preview="ice_latte2_small.jpg">
+                <title>Кофе со льдом; вектор</title>
+            </item>
+            <item id="8" type="pic" src="hunnW.jpg" preview="hunnW_small.jpg">
+                <title>Гунн, иллюстрация к учебнику истории</title>
+            </item>
+            <item id="9" type="pic" src="catW.jpg" preview="catW_small.jpg">
+                <title>Кот; вектор</title>
+            </item>
+            <item id="10" type="pic" src="perunW.jpg" preview="perunW_small.jpg">
+                <title>Перун, серия *Славянские боги*; вектор</title>
+            </item>
+            <item id="11" type="pic" src="fairyW.jpg" preview="fairyW_small.jpg">
+                <title>Фэйри</title>
+            </item>
+            <item id="12" type="pic" src="catsW.jpg" preview="catsW_small.jpg">
+                <title>Котики</title>
+            </item>
+            <item id="13" type="pic" src="apolloW.jpg" preview="apolloW_small.jpg">
+                <title>Голова Аполлона; вектор</title>
+            </item>
+            <item id="14" type="pic" src="zhukW.jpg" preview="zhukW_small.jpg">
+                <title>Жук</title>
+            </item>
+            <item id="15" type="pic" src="foodW.jpg" preview="foodW_small.jpg">
+                <title>Еда; вектор</title>
+            </item>
+            <item id="16" type="pic" src="muzinstW.jpg" preview="muzinstW_small.jpg">
+                <title>Музыкальные инструменты; вектор</title>
+            </item>
+            <item id="17" type="pic" src="setapW.jpg" preview="setapW_small.jpg">
+                <title>Комплект загрузочных картинок к диску; вектор</title>
+            </item>
+            <item id="18" type="pic" src="shW.jpg" preview="shW_small.jpg">
+                <title>Иконки для учебника Географии; вектор</title>
+            </item>
+        </content>
+    </item>
+
+
+    <item id="illustrations" type="gallery">
+        <title>Рисунки</title>
+
+        <menu>
+                <btn locale="RU" skinClass="illustrationsSkinBtn_RU"/>
+                <btn locale="EN" skinClass="illustrationsSkinBtn_EN"/>
+        </menu>
+
+            <item id="0" type="pic" src="Dune_W.jpg" preview="Dune_W_small.jpg">
+                <title>Dune by Dior; акварель</title>
+            </item>
+            <item id="1" type="pic" src="shoes_W.jpg" preview="shoes_W_small.jpg">
+                <title>Туфли; маркеры</title>
+            </item>
+            <item id="2" type="pic" src="white_orchid_W.jpg" preview="white_orchid_W_small.jpg">
+                <title>Белые орхидеи; карандаши, черный маркер</title>
+            </item>
+
+            <item id="3" type="pic" src="givenchy_W_big.jpg" preview="givenchy_W_small.jpg">
+                <title>Givenchy inspiration; акварель</title>
+            </item>
+            <item id="4" type="pic" src="PeachesWbig.jpg" preview="PeachesW_small.jpg">
+                <title>Персики; карандаши, черный маркер</title>
+            </item>
+            <item id="5" type="pic" src="flakonW.jpg" preview="flakonW_small.jpg">
+                <title>Свет в стекле; акварель</title>
+            </item>
+            <item id="6" type="pic" src="orchidsW.jpg" preview="orchidsW_small.jpg">
+                <title>Орхидеи; акварель</title>
+            </item>
+            <item id="7" type="pic" src="shoesW.jpg" preview="shoesW_small.jpg">
+                <title>Туфли; акварель</title>
+            </item>
+    </item>
+
+
+    <item id="promdesign" type="gallery">
+        <title>Промышленный[br/]дизайн</title>
+
+        <menu>
+                <btn locale="RU" skinClass="promDesignSkinBtn_RU"/>
+                <btn locale="EN" skinClass="promDesignSkinBtn_EN"/>
+        </menu>
+
+            <item id="1" type="pic" src="spaW.jpg" preview="spaW_small.jpg">
+                <title>Проект Спа капсулы для домашнего использования</title>
+            </item>
+            <item id="2" type="pic" src="midoriW.jpg" preview="midoriW_small.jpg">
+                <title>Чайный сервиз *Мидори*</title>
+            </item>
+            <item id="3" type="pic" src="midnightW.jpg" preview="midnightW_small.jpg">
+                <title>Упаковка для туалетной воды и духов *Midnight*</title>
+            </item>
+            <item id="4" type="pic" src="vdW.jpg" preview="vdW_small.jpg">
+                <title>Концепт банной серии и парфюмерной упаковки *Vanilla Dreams*</title>
+            </item>
+            <item id="5" type="pic" src="mebW.jpg" preview="mebW_small.jpg">
+                <title>Мебель для кафе *Цукат*</title>
+            </item>
+            <item id="6" type="pic" src="podvesW.jpg" preview="podvesW_small.jpg">
+                <title>Эскиз комплекта украшений</title>
+            </item>
+    </item>
+
+
+    <item id="polygraphics" type="gallery">
+
+        <title>Полиграфия</title>
+
+        <menu>
+            <btn locale="RU" skinClass="poligraphicsSkinBtn_RU"/>
+            <btn locale="EN" skinClass="poligraphicsSkinBtn_EN"/>
+        </menu>
+
+            <item id="0" type="pic" src="zabotaW.jpg" preview="zabotaW_small.jpg">
+                <title>Разработка логотипа для ветеринарной клиники *Забота*, варианты размещения лого на визитке
+                </title>
+            </item>
+            <item id="1" type="pic" src="Paradise_otkritki_1.jpg"
+                  preview="Paradise_otkritki_1_Small.jpg">
+                <title>Подарочные сертификаты для салона красоты</title>
+            </item>
+            <item id="2" type="pic" src="Geo_oblW.jpg" preview="Geo_oblW_small.jpg">
+                <title>Обложка для диска-интерактивный учебник географии</title>
+            </item>
+            <item id="3" type="pic" src="Paradise_visitki_klient.jpg"
+                  preview="Paradise_visitki_klient_small.jpg">
+                <title>Визитки клиента для салона красоты</title>
+            </item>
+            <item id="4" type="pic" src="vizcomW.jpg" preview="vizcomW_small.jpg">
+                <title></title>
+            </item>
+            <item id="5" type="pic" src="wedding_bouklet_W.jpg"
+                  preview="wedding_bouklet_W_small.jpg">
+                <title>Лифлет для ювелирного магазина</title>
+            </item>
+            <item id="6" type="pic" src="oblozhkaW.jpg" preview="oblozhkaW_small.jpg">
+                <title>Варианты обложки для диска с иллюстрацией</title>
+            </item>
+            <item id="7" type="pic" src="tsukatW.jpg" preview="tsukatW_small.jpg">
+                <title></title>
+            </item>
+            <item id="8" type="pic" src="MenuW.jpg" preview="MenuW_small.jpg">
+                <title>Разработка дизайна спецпредложения дла кафе, включающая ретушь и цветокоррекцию фотографий
+                </title>
+            </item>
+
+    </item>
+
+
+    <item id="sketches" type="gallery">
+        <title>Наброски</title>
+
+        <menu>
+            <btn locale="RU" skinClass="sketchesSkinBtn_RU"/>
+            <btn locale="EN" skinClass="sketchesSkinBtn_EN"/>
+        </menu>
+
+            <item id="0" type="pic" src="DixW_big.jpg" preview="DixW_small.jpg">
+                <title>Кошачьи наброски</title>
+            </item>
+            <item id="1" type="pic" src="spascetchW.jpg" preview="spascetchW_small.jpg">
+                <title>Скетчи к СПА капсуле, фломастеры Copic</title>
+            </item>
+            <item id="2" type="pic" src="mantikoraW.jpg" preview="mantikoraW_small.jpg">
+                <title>Мантикора, карандаш</title>
+            </item>
+    </item>
+
+
+
+
+</data>
