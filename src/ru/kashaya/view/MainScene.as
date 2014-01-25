@@ -3,7 +3,11 @@ package ru.kashaya.view {
     import flash.display.Sprite;
 
     import ru.kashaya.ctrl.BGController;
-    import ru.kashaya.resources.Resources;
+	import ru.kashaya.model.IContentDataModel;
+	import ru.kashaya.model.PictureDataModel;
+	import ru.kashaya.resources.Resources;
+	import ru.kashaya.view.components.ImageViewComponent;
+	import ru.kashaya.view.content.IContentPage;
 	import ru.kashaya.view.controls.KSMenuButton;
 	import ru.kashaya.view.controls.KSMenuButtonExt;
 	import ru.kashaya.view.menu.MenuPanel;
@@ -17,7 +21,9 @@ package ru.kashaya.view {
         //public var topMenu:MenuPanel;
         public var leftMenu:MenuPanel;
 
-        public var content : ContentPanel;
+        public var commonContent : ContentPanel;
+		public var imageViewContent : ImageViewComponent;
+
 
 		private var _btnSkinFactory : IKashayaClassFactory;
 		private var _btnFactory : IKashayaClassFactory;
@@ -33,12 +39,22 @@ package ru.kashaya.view {
             createBG();
             //createTopMenu();
             createLeftMenu();
-            createContentPage();
+            createCommonContentPage();
+			createImageContentPage();
         }
+
+
+		public function getContentPage(data : IContentDataModel) : IContentPage
+		{
+			if(data is PictureDataModel) {
+				return imageViewContent;
+			}
+			return commonContent;
+		}
 
         private function createBG():void
         {
-            var bgCont : Sprite = addChild(Resources.storage.getSource("bg") as DisplayObject) as Sprite;
+            var bgCont : Sprite = addChild(Resources.storage.getSource("bg") as Sprite) as Sprite;
             var bgCtrl : BGController = new BGController(bgCont, stage);
         }
 
@@ -69,14 +85,21 @@ package ru.kashaya.view {
 			addChild(leftMenu);
         }
 
-        private function createContentPage():void
+        private function createCommonContentPage():void
         {
-            content = new ContentPanel();
+            commonContent = new ContentPanel();
 
-            content.x = 300;
-            content.y = 180;
+            commonContent.x = 380;
+            commonContent.y = 170;
 
-			addChild(content);
+			addChild(commonContent);
         }
+
+
+		private function createImageContentPage():void
+		{
+			imageViewContent = new ImageViewComponent();
+			addChild(imageViewContent);
+		}
     }
 }

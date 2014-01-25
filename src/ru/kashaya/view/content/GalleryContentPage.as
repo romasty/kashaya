@@ -14,20 +14,24 @@ package ru.kashaya.view.content {
 
     import ru.kashaya.model.GalleryModel;
     import ru.kashaya.model.IContentDataModel;
-    import ru.kashaya.model.PictureDataModel;
+	import ru.kashaya.model.IModel;
+	import ru.kashaya.model.PictureDataModel;
     import ru.kashaya.resources.Resources;
     import ru.kashaya.view.controls.AbstractMenuButton;
+	import ru.plod.core.service.getService;
 
-    public class GalleryContentPage extends Sprite implements IContentPage {
+	public class GalleryContentPage extends Sprite implements IContentPage {
 
 
-        private const SIZE : int = 200;
+        private const SIZE : int = 140;
 
         private var _data:GalleryModel;
 
         private var _picsMask : Sprite;
         private var _picsCont:Sprite;
         private var _pics:Array = new Array();
+
+		private const COLUMNS : int = 4;
 
         //private var _btnLeft:Sprite;
         //private var _btnRight:Sprite;
@@ -97,33 +101,28 @@ package ru.kashaya.view.content {
             var i:int;
             for each(var pic:PictureView in _pics) {
 
-                pic.x = (Math.floor(i / 2) /*- _data.currentIndex*/) * SIZE + .5 * SIZE;
-                pic.y = (i % 2) * SIZE + .5 * SIZE;
+                /*pic.x = (Math.floor(i / 2)) * SIZE + .5 * SIZE;
+                pic.y = (i % 2) * SIZE + .5 * SIZE;*/
+
+
+				pic.x = (i % COLUMNS) * SIZE + .5 * SIZE;
+				pic.y = (Math.floor(i / COLUMNS)) * SIZE + .5 * SIZE;
 
                 var res : Boolean = ((i >= _data.currentIndex * 2) && (i < (_data.currentIndex * 2 + 6)))
-                //trace("___alignPictures", i,  _data.currentIndex * 2, _data.currentIndex * 2 +6, res);
-                //trace("___alignPictures___", i,   pic.x, pic.y);
 
-                /*if(res) {
-                    pic.alpha = 1;
-                } else {
-                    pic.alpha = .3
-                }*/
-
-
-
-                    if(res) {
-                        if(overpic == pic) {
-                            pic.setSize(180, 180);
-                        } else {
-                            var s: int = 80 + Math.random() * 60;
-                            pic.setSize(s, s);
-                        }
-                        pic.visible = true;
-                    } else {
-                        pic.setSize(20, 20);
-                        pic.visible = false;
-                    }
+				if(res) {
+					if(overpic == pic) {
+						pic.setSize(120, 120);
+					} else {
+						//var s: int = 80 + Math.random() * 60;
+						var s: int = 100;
+						pic.setSize(s, s);
+					}
+					pic.visible = true;
+				} else {
+					pic.setSize(20, 20);
+					pic.visible = false;
+				}
 
 
                 i ++;
@@ -190,7 +189,7 @@ package ru.kashaya.view.content {
         }*/
 
 
-        private function onBtn(e : MouseEvent) : void
+        /*private function onBtn(e : MouseEvent) : void
         {
             var btn : MovieClip = e.currentTarget as MovieClip;
             if(e.type == MouseEvent.MOUSE_DOWN) {
@@ -198,7 +197,7 @@ package ru.kashaya.view.content {
             } else {
                 btn.gotoAndStop(1);
             }
-        }
+        }*/
 
        /* private function updateButtonStatus():void
         {
@@ -238,7 +237,7 @@ package ru.kashaya.view.content {
 
         //-------------------------
 
-        private var X:int;
+        /*private var X:int;
 
         private function startSlide():void {
             X = - _data.currentIndex * SIZE;
@@ -257,7 +256,7 @@ package ru.kashaya.view.content {
         private function stopSlide():void {
             _picsCont.removeEventListener(Event.ENTER_FRAME, slide);
             _picsCont.x = X;
-        }
+        }*/
 
 
 
@@ -266,28 +265,23 @@ package ru.kashaya.view.content {
             var pic : PictureView = e.currentTarget as PictureView;
             var data : PictureDataModel = pic.data;
 
+			IModel(getService(IModel)).currentData = data;
+			return;
 
-            closeBigPic();
+            /*closeBigPic();
 
-            _bigPic = new PictureViewBig()
+            _bigPic = new PictureViewBig();
             addChild(_bigPic);
-            _bigPic.x = 300;
+
+			_bigPic.x = 300;
             _bigPic.y = 200;
             _bigPic.setSize(80, 80);
             _bigPic.showContent(data);
-            _bigPic.addEventListener(Event.CLOSE, closeBigPic);
+            _bigPic.addEventListener(Event.CLOSE, closeBigPic);*/
         }
 
 
-        private function closeBigPic(e : Event = null):void
-        {
-            if(_bigPic) {
-                _bigPic.clear();
-                _bigPic.removeEventListener(Event.CLOSE, closeBigPic);
-                removeChild(_bigPic);
-                _bigPic = null;
-            }
-        }
+
 
 
         private function onOver(e : Event) : void
@@ -313,7 +307,7 @@ package ru.kashaya.view.content {
 
             _data.currentIndex = 0;
 
-            closeBigPic();
+            //closeBigPic();
         }
     }
 }

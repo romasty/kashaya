@@ -51,7 +51,6 @@ package ru.kashaya.model {
 
 			var menuXML : XML = xml.menu[0];
 			if(menuXML) _menuData.parseData(menuXML);
-
             trace("TITLE:", _title, xml.name())
 
         }

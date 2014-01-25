@@ -17,7 +17,7 @@ package ru.kashaya.view {
     import ru.kashaya.view.content.TextContentPage;
 	import ru.plod.core.service.getService;
 
-	public class ContentPanel extends Sprite {
+	public class ContentPanel extends Sprite implements IContentPage {
 
 
         private var _contentPage : IContentPage;
@@ -25,15 +25,12 @@ package ru.kashaya.view {
         
         public function ContentPanel() {
 			_model = getService(IModel);
-			_model.addEventListener(Event.CHANGE, model_changeHandler);
+
 		}
 
-        protected function showContent(data : IContentDataModel) : void
+        public function showContent(data : IContentDataModel) : void
         {
-            if(_contentPage) {
-                _contentPage.clear();
-                removeChild(_contentPage.displayObject);
-            }
+			clear();
 
             var cl : Class = getContentClass(data);
             _contentPage = new cl() as IContentPage;
@@ -56,9 +53,21 @@ package ru.kashaya.view {
             return null;
         }
 
-		private function model_changeHandler(event:Event):void
+
+
+		public function clear():void
 		{
-			showContent(_model.currentData);
+			if(_contentPage) {
+				_contentPage.clear();
+				removeChild(_contentPage.displayObject);
+				_contentPage = null
+			}
+		}
+
+
+		public function get displayObject():DisplayObject
+		{
+			return this;
 		}
 	}
 }

@@ -25,7 +25,6 @@
             <btn locale="EN" skinClass="cgArtSkinBtn_EN"/>
         </menu>
 
-        <content type="gallery">
             <item id="0" type="pic" src="DragonDwarfW_big.jpg" preview="DragonDwarfW_small.jpg">
                 <title>О любви к пиву</title>
             </item>
@@ -83,7 +82,6 @@
             <item id="18" type="pic" src="shW.jpg" preview="shW_small.jpg">
                 <title>Иконки для учебника Географии; вектор</title>
             </item>
-        </content>
     </item>
 
 

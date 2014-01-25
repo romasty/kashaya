@@ -36,11 +36,11 @@ package ru.kashaya.view.content {
         protected var _size:int;
         protected var _currentSize:Number = 0;
 
-        override public function setSize(size:int, h:int):void {
+        /*override public function setSize(size:int, h:int):void {
 
-            /*_picWidth = size;
+            *//*_picWidth = size;
              _picHeight = size;
-             draw();*/
+             draw();*//*
 
             //trace("startResize!!!", _size, size)
 
@@ -53,7 +53,7 @@ package ru.kashaya.view.content {
             addEventListener(Event.ENTER_FRAME, resize);
 
 
-        }
+        }*/
 
         protected function resize(e:Event):void {
             _currentSize += (_size - _currentSize) / 4;

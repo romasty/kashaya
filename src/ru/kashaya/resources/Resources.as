@@ -6,7 +6,7 @@ package ru.kashaya.resources {
 
         public static const DATA_PATH : String = "data/data.xml";
 
-        public static const PIC_PATH : String = "pics/";
+        public static const PIC_PATH : String = "assets/";
 
         //public static var storage : SourceStorage = new SourceStorage();
         public static var storage : SmartResourceStorage = new SmartResourceStorage();

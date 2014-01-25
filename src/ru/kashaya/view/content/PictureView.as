@@ -29,7 +29,7 @@ package ru.kashaya.view.content {
 
         protected var borderRadius:int = 30;
         protected var maskRadius:int = 20;
-        protected var diff:int = 10;
+        protected var diff:int = 2;
 
 
         protected var _loader:Loader;
@@ -119,26 +119,41 @@ package ru.kashaya.view.content {
 
             _border.graphics.clear();
             _border.graphics.beginFill(KashayaColors.GRAY_1, 1);
-            _border.graphics.drawRoundRect(
+            /*_border.graphics.drawRoundRect(
                     -_picWidth / 2
                     , -_picHeight / 2
                     , _picWidth
                     , _picHeight
                     , borderRadius
-                    , borderRadius);
+                    , borderRadius);*/
+
+			_border.graphics.drawRect(
+					-_picWidth / 2
+					, -_picHeight / 2
+					, _picWidth
+					, _picHeight
+			);
 
             _border.graphics.endFill();
 
 
             _mask.graphics.clear();
             _mask.graphics.beginFill(KashayaColors.COLOR_1, 1);
-            _mask.graphics.drawRoundRect(
+            /*_mask.graphics.drawRoundRect(
                     -_picWidth / 2 + diff
                     , -_picHeight / 2 + diff
                     , _picWidth - 2 * diff
                     , _picHeight - 2 * diff
                     , maskRadius
-                    , maskRadius);
+                    , maskRadius);*/
+
+			_mask.graphics.drawRect(
+					-_picWidth / 2 + diff
+					, -_picHeight / 2 + diff
+					, _picWidth - 2 * diff
+					, _picHeight - 2 * diff );
+
+
             _mask.graphics.endFill();
         }
 

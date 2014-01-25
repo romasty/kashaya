@@ -28,6 +28,8 @@ package ru.kashaya.ctrl {
         public function init(model : IModel, scene : MainScene):void
         {
             _model = model;
+			_model.addEventListener(Event.CHANGE, model_changeHandler);
+
             _scene = scene;
 
             //scene.topMenu.setController(this);
@@ -36,6 +38,14 @@ package ru.kashaya.ctrl {
             startAbout();
 
         }
+
+
+		private function model_changeHandler(event:Event):void
+		{
+			var data : IContentDataModel = _model.currentData;
+			_scene.getContentPage(data).showContent(data);
+		}
+
 
         private function startAbout():void
         {

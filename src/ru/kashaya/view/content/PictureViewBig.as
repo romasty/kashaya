@@ -164,14 +164,14 @@ package ru.kashaya.view.content {
             _titleTf.border = true;
             _titleTf.borderColor = 0x999999;
 
-            _titleTf.embedFonts = true;
+            //_titleTf.embedFonts = true;
 
 
             _titleTf.htmlText = _data.title;
 
-            var tf:TextFormat = new TextFormat()
+            var tf:TextFormat = new TextFormat();
             tf.color = 0x999999;
-            tf.font = "a_AvanteBs";
+            //tf.font = "a_AvanteBs";
             tf.size = 14;
             tf.align = "center"
 
