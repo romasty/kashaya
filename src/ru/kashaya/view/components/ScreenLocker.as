@@ -6,10 +6,19 @@
  * To change this template use File | Settings | File Templates.
  */
 package ru.kashaya.view.components {
+	import flash.display.BitmapData;
 	import flash.display.Sprite;
 	import flash.events.Event;
 
+
+
+
+
 	public class ScreenLocker extends Sprite {
+
+		//TODO:
+		//public static const FILL_DEFAULT : Object = {type : "fill", color : 0xAA000000};
+		//public static const BLACK_LATICE : Object = {type : "latice", color1:0xFF000000, color2:0xCC000000};
 
 		private var _fillMode : FillMode;
 
@@ -21,6 +30,17 @@ package ru.kashaya.view.components {
 
 			_fillMode = new BitmapLaticeFill(0xFF000000, 0xCC000000);
 		}
+
+
+		//TODO:
+		/*private function getFillMode(param : Object) : FillMode
+		{
+			if(param is BitmapData) {
+				return new BitmapFill(param as BitmapData);
+			} else {
+
+			}
+		}*/
 
 		private function draw():void
 		{

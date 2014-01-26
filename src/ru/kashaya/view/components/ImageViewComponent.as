@@ -9,8 +9,7 @@ package ru.kashaya.view.components {
 	import flash.display.DisplayObject;
 	import flash.display.Sprite;
 	import flash.events.Event;
-
-	import mx.states.AddChild;
+	import flash.events.MouseEvent;
 
 	import ru.kashaya.model.IContentDataModel;
 
@@ -34,7 +33,8 @@ package ru.kashaya.view.components {
 		private function init():void
 		{
 			_locker = new ScreenLocker();
-			_closeBtn = new Sprite(); // TODO
+			_closeBtn = new DefaultCloseButton();
+			_closeBtn.addEventListener(MouseEvent.CLICK, closeHandler);
 		}
 
 
@@ -46,17 +46,19 @@ package ru.kashaya.view.components {
 			_image.x = 100;
 			_image.y = 50;
 			_image.setSize(80, 80);
-			_image.addEventListener(Event.CLOSE, closeBigPic);
+			_image.addEventListener(Event.CLOSE, closeHandler);
 			_image.showContent(data);
 
 			addChild(_locker);
 			addChild(_closeBtn);
 			addChild(_image);
 
+
+
 			resize();
 		}
 
-		private function closeBigPic(e:Event = null):void
+		private function closeHandler(e:Event = null):void
 		{
 			clear();
 		}
@@ -69,7 +71,7 @@ package ru.kashaya.view.components {
 			removeChild(_closeBtn);
 
 			_image.clear();
-			_image.removeEventListener(Event.CLOSE, closeBigPic);
+			_image.removeEventListener(Event.CLOSE, closeHandler);
 			removeChild(_image);
 		}
 
@@ -94,7 +96,7 @@ package ru.kashaya.view.components {
 
 		private function stage_resizeHandler(event:Event):void
 		{
-
+			resize();
 		}
 
 
@@ -102,5 +104,31 @@ package ru.kashaya.view.components {
 		{
 			return this;
 		}
+	}
+}
+
+import flash.display.Sprite;
+import flash.text.TextField;
+import flash.text.TextFieldAutoSize;
+
+
+class DefaultCloseButton extends Sprite
+{
+	private var _label : TextField;
+
+	public function DefaultCloseButton()
+	{
+		mouseChildren = false;
+		buttonMode = true;
+
+		_label = new TextField();
+		_label.textColor = 0xFFFFFF;
+		_label.text = "close X";
+		_label.autoSize = TextFieldAutoSize.LEFT;
+		addChild(_label);
+
+		graphics.beginFill(0, 0);
+		graphics.drawRect(0, 0, _label.width, _label.height);
+		graphics.endFill();
 	}
 }
