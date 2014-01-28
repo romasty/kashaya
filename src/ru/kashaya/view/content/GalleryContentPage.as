@@ -7,8 +7,9 @@ package ru.kashaya.view.content {
     import flash.events.Event;
 
     import flash.events.MouseEvent;
+	import flash.geom.Point;
 
-    import flash.ui.Mouse;
+	import flash.ui.Mouse;
 
     import mx.events.ModuleEvent;
 
@@ -17,7 +18,11 @@ package ru.kashaya.view.content {
 	import ru.kashaya.model.IModel;
 	import ru.kashaya.model.PictureDataModel;
     import ru.kashaya.resources.Resources;
-    import ru.kashaya.view.controls.AbstractMenuButton;
+	import ru.kashaya.view.components.layout.TileLayout;
+	import ru.kashaya.view.components.scroll.ScrollBarComponentBase;
+	import ru.kashaya.view.components.scroll.ScrollContainerBase;
+	import ru.kashaya.view.controls.AbstractMenuButton;
+	import ru.kashaya.view.controls.KashayaScrollBar;
 	import ru.plod.core.service.getService;
 
 	public class GalleryContentPage extends Sprite implements IContentPage {
@@ -27,17 +32,16 @@ package ru.kashaya.view.content {
 
         private var _data:GalleryModel;
 
-        private var _picsMask : Sprite;
+        //private var _picsMask : Sprite;
         private var _picsCont:Sprite;
         private var _pics:Array = new Array();
 
-		private const COLUMNS : int = 4;
 
-        //private var _btnLeft:Sprite;
-        //private var _btnRight:Sprite;
+		private var _layout : TileLayout = new TileLayout(4, 140, 140);
 
+		private var _container : ScrollContainerBase;
+		private var _scrollBar : ScrollBarComponentBase;
 
-        private var _bigPic : PictureViewBig;
 
         public function GalleryContentPage() {
 
@@ -52,15 +56,29 @@ package ru.kashaya.view.content {
 
 		private function createChildren():void
         {
-            _picsCont = new Sprite();
-            addChild(_picsCont);
+			_container = new ScrollContainerBase();
+			_container.width = SIZE * 4;
+			_container.height = SIZE * 2;
+			addChild(_container);
 
-            _picsMask = new Sprite();
+			_scrollBar = new KashayaScrollBar();
+			_scrollBar.x = SIZE * 4 + 10;
+			_scrollBar.y = -15;
+			_scrollBar.height = 350;
+			addChild(_scrollBar);
+			_scrollBar.addEventListener(Event.CHANGE, scrollBar_changeHandler);
+
+
+			_picsCont = new Sprite();
+			_container.setContent(_picsCont);
+            //addChild(_picsCont);
+
+            /*_picsMask = new Sprite();
             //addChild(_picsMask);
             _picsMask.graphics.beginFill(0, .2);
             _picsMask.graphics.drawRect(0, 0, SIZE * 3, SIZE *2);
             _picsMask.graphics.endFill();
-            _picsMask.mouseEnabled = false;
+            _picsMask.mouseEnabled = false;*/
 
             //createButtons();
         }
@@ -79,7 +97,9 @@ package ru.kashaya.view.content {
                 createPicture(picData);
             }
 
-            alignPictures();
+            updatePictures();
+			_scrollBar.relativeScrollerHeight = _container.height/_container.content.height;
+
         }
 
 
@@ -97,30 +117,21 @@ package ru.kashaya.view.content {
         }
 
 
-        private function alignPictures(overpic : PictureView = null):void {
-            var i:int;
+        private function updatePictures(overpic : PictureView = null):void {
+
+			_layout.updateLayout(Vector.<DisplayObject>(_pics));
+
+
             for each(var pic:PictureView in _pics) {
 
-				pic.x = (i % COLUMNS) * SIZE + .5 * SIZE;
-				pic.y = (Math.floor(i / COLUMNS)) * SIZE + .5 * SIZE;
-
-                var res : Boolean = ((i >= _data.currentIndex * 2) && (i < (_data.currentIndex * 2 + 6)))
-
-				if(res) {
 					if(overpic == pic) {
 						pic.setSize(120, 120);
 					} else {
-						//var s: int = 80 + Math.random() * 60;
 						var s: int = 100;
 						pic.setSize(s, s);
 					}
 					pic.visible = true;
-				} else {
-					pic.setSize(20, 20);
-					pic.visible = false;
-				}
 
-                i ++;
             }
         }
 
@@ -130,7 +141,6 @@ package ru.kashaya.view.content {
             var data : PictureDataModel = pic.data;
 
 			IModel(getService(IModel)).currentData = data;
-			return;
         }
 
 
@@ -139,10 +149,8 @@ package ru.kashaya.view.content {
 
         private function onOver(e : Event) : void
         {
-
             var pic : PictureView = e.currentTarget as PictureView;
-            trace("onOver", pic, e.target, e.currentTarget)
-            alignPictures(pic);
+            updatePictures(pic);
         }
 
 
@@ -159,5 +167,10 @@ package ru.kashaya.view.content {
             _pics = new Array();
             _data.currentIndex = 0;
         }
-    }
+
+		private function scrollBar_changeHandler(event:Event):void
+		{
+			_container.scrollPosition = new Point(0, _scrollBar.scrollPosition);
+		}
+	}
 }

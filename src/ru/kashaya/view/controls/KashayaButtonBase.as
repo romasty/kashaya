@@ -30,7 +30,7 @@ package ru.kashaya.view.controls {
 
 			_state = UP;
 
-			_skin = skin
+			_skin = skin;
 			addChild(_skin);
 			_skin.mouseChildren = _skin.mouseEnabled = false;
 
