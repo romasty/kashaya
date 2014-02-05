@@ -31,7 +31,7 @@ package ru.kashaya {
             stage.scaleMode = StageScaleMode.NO_SCALE;
             stage.frameRate = 24;
 
-			ServiceManager.getInstance().registerService(IModel, new Model());
+			ServiceManager.instance.registerService(IModel, new Model());
 
             KSFacade.instance.scene = addChild(new MainScene()) as MainScene;
             KSFacade.instance.prelscene = addChild(new PreloaderScene()) as PreloaderScene;
