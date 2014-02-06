@@ -13,18 +13,20 @@ package ru.kashaya.view.components.scroll {
 	import flash.utils.setTimeout;
 
 	import ru.kashaya.view.components.ComponentBase;
+	import ru.plod.adt.Segment;
 
 	public class ScrollBarComponentBase extends ComponentBase {
 
 		protected var _scrollArea:Sprite;
 		protected var _scroller:Sprite;
-		protected var _scrollPosition:Number = 0;
 		protected var _relativeScrollerHeight : Number;
 
+		protected var _scrollSegment : Segment;
 
 
 		public function ScrollBarComponentBase()
 		{
+			_scrollSegment = new Segment(0, 1);
 			addEventListener(Event.ADDED_TO_STAGE, addedToStageHandler);
 			addEventListener(Event.REMOVED_FROM_STAGE, removedFromStageHandler);
 		}
@@ -51,25 +53,20 @@ package ru.kashaya.view.components.scroll {
 			_scrollArea.height = height;
 
 			_scroller.height =  _relativeScrollerHeight * height;
-
-
-			var maxScroll:int = _scrollArea.height - _scroller.height;
-			if (maxScroll <= 0) throw new Error();
-			_scroller.y = maxScroll * _scrollPosition;
+			_scrollSegment.change(0, _scrollArea.height - _scroller.height);
+			_scroller.y = _scrollSegment.value;
 		}
 
 
 		public function get scrollPosition():Number
 		{
-			return _scrollPosition;
+			return _scrollSegment.position;
 		}
 
 		public function set scrollPosition(value:Number):void
 		{
-			if(value < 0) value = 0;
-			if(value > 1) value = 1;
-			if(value != _scrollPosition) {
-				_scrollPosition = value;
+			if(value != _scrollSegment.position) {
+				_scrollSegment.position = value;
 				dispatchEvent(new Event(Event.CHANGE));
 			}
 		}
@@ -81,11 +78,6 @@ package ru.kashaya.view.components.scroll {
 			if(value >=1) value = 0.99;
 			_relativeScrollerHeight = value;
 			invalidate();
-		}
-
-		protected function get scrollHeight() : Number
-		{
-			return _scrollArea.height - _scroller.height;
 		}
 
 		private function addedToStageHandler(event:Event):void
@@ -122,11 +114,11 @@ package ru.kashaya.view.components.scroll {
 
 		private function scrollDown() : void
 		{
-			var ds : Number =  _scroller.height / scrollHeight;
+			var ds : Number =  _scroller.height / _scrollSegment.length;
 			scrollPosition += ds;
 
 			var complete : Boolean;
-			var scrollMouseY : Number =  (_scrollArea.mouseY - _scroller.height/2) / scrollHeight;
+			var scrollMouseY : Number =  (_scrollArea.mouseY - _scroller.height/2) / _scrollSegment.length;
 			if(scrollPosition > scrollMouseY) {
 				scrollPosition = scrollMouseY;
 				complete = true
@@ -138,11 +130,11 @@ package ru.kashaya.view.components.scroll {
 
 		private function scrollUp() : void
 		{
-			var ds : Number =  _scroller.height /scrollHeight;
+			var ds : Number =  _scroller.height / _scrollSegment.length;
 			scrollPosition -= ds;
 
 			var complete : Boolean;
-			var scrollMouseY : Number =  (_scrollArea.mouseY - _scroller.height/2) / scrollHeight;
+			var scrollMouseY : Number =  (_scrollArea.mouseY - _scroller.height/2) / _scrollSegment.length;
 			if(scrollPosition < scrollMouseY) {
 				scrollPosition = scrollMouseY;
 				complete = true;
@@ -175,8 +167,7 @@ package ru.kashaya.view.components.scroll {
 
 		private function mouseMoveHandler(event:MouseEvent):void
 		{
-			scrollPosition = (_scrollArea.mouseY - _scrollerDownMouseY) / scrollHeight;
-
+			scrollPosition = (_scrollArea.mouseY - _scrollerDownMouseY) / _scrollSegment.length;
 			invalidate();
 		}
 
