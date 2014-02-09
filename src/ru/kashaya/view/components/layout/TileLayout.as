@@ -6,33 +6,29 @@
  * To change this template use File | Settings | File Templates.
  */
 package ru.kashaya.view.components.layout {
+
 	import flash.display.DisplayObject;
+	import flash.geom.Rectangle;
 
-	public class TileLayout implements ILayout{
+	public class TileLayout extends AbstractCellLayout {
 
-		protected var _columns : int;
-		protected var _tileWidth : int;
-		protected var _tileHeight : int;
+		protected var _columns:int;
+		protected var _measuredCell : Rectangle = new Rectangle();
 
-
-		public function TileLayout(columns:int, tileWidth:int, tileHeight:int)
+		public function TileLayout(columns:int, tileWidth:int, tileHeight:int, alignType:String = null)
 		{
 			_columns = columns;
-			_tileWidth = tileWidth;
-			_tileHeight = tileHeight;
+			_measuredCell.width = tileWidth;
+			_measuredCell.height = tileHeight;
+
+			super (alignType);
 		}
 
-		public function updateLayout(children:Vector.<DisplayObject>):void
+		override protected function getRectangle(i : int, element : DisplayObject) : Rectangle
 		{
-			var i:int;
-			for each(var displayObject:DisplayObject in children) {
-
-				displayObject.x = (i % _columns) * _tileWidth + .5 * _tileWidth;
-				displayObject.y = (Math.floor(i / _columns)) * _tileHeight + .5 * _tileHeight;
-				i ++;
-			}
+			_measuredCell.x = (i % _columns) * _measuredCell.width;
+			_measuredCell.y =  int(i / _columns) * _measuredCell.height;
+			return _measuredCell;
 		}
-
-
 	}
 }

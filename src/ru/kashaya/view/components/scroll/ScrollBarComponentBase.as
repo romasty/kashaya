@@ -116,34 +116,18 @@ package ru.kashaya.view.components.scroll {
 		{
 			var ds : Number =  _scroller.height / _scrollSegment.length;
 			scrollPosition += ds;
-
-			var complete : Boolean;
-			var scrollMouseY : Number =  (_scrollArea.mouseY - _scroller.height/2) / _scrollSegment.length;
-			if(scrollPosition > scrollMouseY) {
-				scrollPosition = scrollMouseY;
-				complete = true
-			}
 			invalidate();
 
-			if(_scrollAreaMouseDown && !complete) setTimeout(scrollDown, 100);
+			if(_scrollAreaMouseDown && scrollPosition != 1) setTimeout(scrollDown, 100);
 		}
 
 		private function scrollUp() : void
 		{
 			var ds : Number =  _scroller.height / _scrollSegment.length;
 			scrollPosition -= ds;
-
-			var complete : Boolean;
-			var scrollMouseY : Number =  (_scrollArea.mouseY - _scroller.height/2) / _scrollSegment.length;
-			if(scrollPosition < scrollMouseY) {
-				scrollPosition = scrollMouseY;
-				complete = true;
-			}
-			if(_scrollAreaMouseDown && ! complete) setTimeout(scrollUp, 100);
-
 			invalidate();
 
-
+			if(_scrollAreaMouseDown && scrollPosition != 0) setTimeout(scrollUp, 100);
 		}
 
 

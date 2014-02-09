@@ -76,11 +76,11 @@ package ru.kashaya.view {
         private function createLeftMenu():void
         {
             leftMenu = new MenuPanel();
-			leftMenu.layout = new VerticalMenuLayout(50);
+			leftMenu.layout = new VerticalMenuLayout(40);
 			leftMenu.buttonFactory = _btnFactory;
 
-            leftMenu.x = 40;
-            leftMenu.y = 180;
+            leftMenu.x = 30;
+            leftMenu.y = 190;
 
 			addChild(leftMenu);
         }

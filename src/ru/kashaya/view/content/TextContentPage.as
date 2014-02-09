@@ -51,7 +51,7 @@ package ru.kashaya.view.content {
             tf.htmlText = textData.body;
 
             var format : TextFormat = new TextFormat();
-            format.size = 20;
+            format.size = 14;
             format.leading = 0;
             //format.align = "center";
 

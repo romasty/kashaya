@@ -10,6 +10,7 @@ package ru.kashaya.view.menu {
     import ru.kashaya.model.IContentDataModel;
 	import ru.kashaya.model.IModel;
 	import ru.kashaya.view.IKashayaClassFactory;
+	import ru.kashaya.view.components.layout.ILayout;
 	import ru.kashaya.view.controls.KashayaMenuButton;
 	import ru.plod.core.service.getService;
 
@@ -23,7 +24,7 @@ package ru.kashaya.view.menu {
 
         protected var _controller : IMenuController;
 
-		private var _layout : IMenuLayout;
+		private var _layout : ILayout;
 
 
         public function MenuPanel()
@@ -32,7 +33,7 @@ package ru.kashaya.view.menu {
         }
 
 
-		public function set layout(value:IMenuLayout):void
+		public function set layout(value:ILayout):void
 		{
 			_layout = value;
 		}
@@ -122,7 +123,7 @@ package ru.kashaya.view.menu {
 
         protected function alignButtons() : void
         {
-			_layout.align(_buttons);
+			_layout.updateLayout(_buttons);
         }
 
         public function updateButtnonStatus():void

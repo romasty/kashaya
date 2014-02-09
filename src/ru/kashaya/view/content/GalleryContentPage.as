@@ -18,6 +18,7 @@ package ru.kashaya.view.content {
 	import ru.kashaya.model.IModel;
 	import ru.kashaya.model.PictureDataModel;
     import ru.kashaya.resources.Resources;
+	import ru.kashaya.view.components.layout.AlignType;
 	import ru.kashaya.view.components.layout.TileLayout;
 	import ru.kashaya.view.components.scroll.ScrollBarComponentBase;
 	import ru.kashaya.view.components.scroll.ScrollContainerBase;
@@ -37,7 +38,7 @@ package ru.kashaya.view.content {
         private var _pics:Array = new Array();
 
 
-		private var _layout : TileLayout = new TileLayout(4, 140, 140);
+		private var _layout : TileLayout = new TileLayout(4, 140, 140, AlignType.CENTER);
 
 		private var _container : ScrollContainerBase;
 		private var _scrollBar : ScrollBarComponentBase;
@@ -119,13 +120,10 @@ package ru.kashaya.view.content {
 
         private function updatePictures(overpic : PictureView = null):void {
 
-			_layout.updateLayout(Vector.<DisplayObject>(_pics));
-
-
             for each(var pic:PictureView in _pics) {
 
 					if(overpic == pic) {
-						pic.setSize(120, 120);
+						pic.setSize(110, 110);
 					} else {
 						var s: int = 100;
 						pic.setSize(s, s);
@@ -133,6 +131,7 @@ package ru.kashaya.view.content {
 					pic.visible = true;
 
             }
+			_layout.updateLayout(Vector.<DisplayObject>(_pics));
         }
 
         private function onClick(e : Event) : void

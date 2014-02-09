@@ -9,8 +9,9 @@ package ru.kashaya.view.content {
 
     import flash.events.ProgressEvent;
     import flash.events.SecurityErrorEvent;
+	import flash.geom.Rectangle;
 
-    import flash.net.URLRequest;
+	import flash.net.URLRequest;
 
     import ru.kashaya.model.IContentDataModel;
     import ru.kashaya.model.PictureDataModel;
@@ -41,6 +42,37 @@ package ru.kashaya.view.content {
             createPicture();
         }
 
+
+		override public function get width():Number
+		{
+			return _picWidth;
+		}
+
+		override public function set width(value:Number):void
+		{
+			_picWidth= value;
+		}
+
+		override public function get height():Number
+		{
+			return _picHeight;
+		}
+
+		override public function set height(value:Number):void
+		{
+			_picHeight = value;
+		}
+
+
+		override public function getRect(targetCoordinateSpace:DisplayObject):Rectangle
+		{
+			return _border.getRect(targetCoordinateSpace);
+		}
+
+		override public function getBounds(targetCoordinateSpace:DisplayObject):Rectangle
+		{
+			return _border.getBounds(targetCoordinateSpace);
+		}
 
 		public function get displayObject():DisplayObject
 		{
