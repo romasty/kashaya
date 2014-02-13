@@ -13,7 +13,7 @@ package ru.kashaya.view.components.scroll {
 	import flash.utils.setTimeout;
 
 	import ru.kashaya.view.components.ComponentBase;
-	import ru.plod.adt.Segment;
+	import ru.plod.math.SliderPosition;
 
 	public class ScrollBarComponentBase extends ComponentBase {
 
@@ -21,12 +21,12 @@ package ru.kashaya.view.components.scroll {
 		protected var _scroller:Sprite;
 		protected var _relativeScrollerHeight : Number;
 
-		protected var _scrollSegment : Segment;
+		protected var _scrollSegment : SliderPosition;
 
 
 		public function ScrollBarComponentBase()
 		{
-			_scrollSegment = new Segment(0, 1);
+			_scrollSegment = new SliderPosition(0, 1);
 			addEventListener(Event.ADDED_TO_STAGE, addedToStageHandler);
 			addEventListener(Event.REMOVED_FROM_STAGE, removedFromStageHandler);
 		}

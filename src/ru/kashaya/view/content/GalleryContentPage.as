@@ -19,6 +19,8 @@ package ru.kashaya.view.content {
 	import ru.kashaya.model.PictureDataModel;
     import ru.kashaya.resources.Resources;
 	import ru.kashaya.view.components.layout.AlignType;
+	import ru.kashaya.view.components.layout.ILayout;
+	import ru.kashaya.view.components.layout.SimpleTileLayout;
 	import ru.kashaya.view.components.layout.TileLayout;
 	import ru.kashaya.view.components.scroll.ScrollBarComponentBase;
 	import ru.kashaya.view.components.scroll.ScrollContainerBase;
@@ -38,7 +40,7 @@ package ru.kashaya.view.content {
         private var _pics:Array = new Array();
 
 
-		private var _layout : TileLayout = new TileLayout(4, 140, 140, AlignType.CENTER);
+		private var _layout : ILayout = new SimpleTileLayout(4, 140, 140, AlignType.CENTER);
 
 		private var _container : ScrollContainerBase;
 		private var _scrollBar : ScrollBarComponentBase;

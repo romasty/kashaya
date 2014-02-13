@@ -15,38 +15,48 @@ package ru.kashaya.view.components.layout {
 
 	public class HorizontalLayout extends AbstractCellLayout implements ILayout {
 
-		protected var _measuredCell : Rectangle = new Rectangle();
+		protected var _measuredCell:Rectangle = new Rectangle();
 
 		public function HorizontalLayout(alignType:String = null)
 		{
-			super (alignType);
+			super(alignType);
 		}
 
 
 		//TODO:
-		protected function measure(children:Vector.<DisplayObject>):void
+		override protected function measure(children:Vector.<DisplayObject>):void
 		{
-
 			for each (var displayObject:DisplayObject in children) {
-				_measuredCell.width = Math.max(_measuredCell.width , displayObject.width);
-				_measuredCell.height = Math.max(_measuredCell.height , displayObject.width);
+				_measuredCell.width = Math.max(_measuredCell.width, displayObject.width);
+				_measuredCell.height = Math.max(_measuredCell.height, displayObject.width);
 			}
 		}
 
-		/*override protected function getRectangle(i:int, element:DisplayObject):Rectangle
+		protected function measureWidth(element : DisplayObject) : uint
 		{
-			return new Rectangle(i*_tileWidth, 0, _tileWidth, _tileHeight);
-		}*/
+			return _measuredCell.width = Math.max(_measuredCell.width, element.width);
+		}
+
+		protected function measureHeight(element : DisplayObject) : uint
+		{
+			return _measuredCell.height = Math.max(_measuredCell.width, element.width);
+		}
+
+
+		/*override protected function getRectangle(index:int, element:DisplayObject):Rectangle
+		{
+			_measuredCell.x = i * _measuredCell.width;
+			return _measuredCell;
+		}
 
 
 		//relative
-		/*override protected function getRectangle(i:int, element:DisplayObject):Rectangle
-	 {
-	 var measuredWidth : int; //TODO
-	 var result : Rectangle = new Rectangle(measuredWidth, 0, _tileWidth, _tileHeight);
-	 measuredWidth += element.width;
-	 return result;
-	 }*/
+		override protected function getRectangle(index:int, element:DisplayObject):Rectangle
+		{
+			_measuredCell.x += _measuredCell.width;
+			_measuredCell.width = element.width;
+			return _measuredCell;
+		}*/
 
 
 	}

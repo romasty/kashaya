@@ -1,48 +1,49 @@
 /**
  * Created with IntelliJ IDEA.
  * User: vic
- * Date: 2/9/14
- * Time: 1:54 AM
+ * Date: 2/13/14
+ * Time: 11:06 PM
  * To change this template use File | Settings | File Templates.
  */
 package ru.kashaya.view.components.layout {
 	import flash.display.DisplayObject;
-	import flash.errors.IllegalOperationError;
 	import flash.geom.Rectangle;
 
-	public class AbstractCellLayout implements ILayout {
+	public class SimpleTileLayout implements ILayout {
 
-		protected var _alignType : String;
-		public var checkBounds : Boolean = true;
+		protected var _alignType:String;
+		protected var _columns:int;
+		protected var _measuredCell:Rectangle = new Rectangle();
+		public var checkBounds:Boolean = true;
 
-		public function AbstractCellLayout(alignType : String)
+		public function SimpleTileLayout(columns:int, tileWidth:int, tileHeight:int, alignType:String = null)
 		{
-			_alignType = alignType ? alignType : AlignType.TOP_LEFT;
+			_columns = columns;
+			_measuredCell.width = tileWidth;
+			_measuredCell.height = tileHeight;
+			_alignType = alignType ? alignType : AlignType.CENTER;
 		}
+
 
 		public function updateLayout(children:Vector.<DisplayObject>):void
 		{
-			measure(children);
 			var i:int;
 			for each(var displayObject:DisplayObject in children) {
-				var placementRect : Rectangle = getRectangle(i, displayObject);
+				var placementRect:Rectangle = getRectangle(i, displayObject);
 				arrange(displayObject, placementRect);
-				if(checkBounds) validateBounds(displayObject);
+				if (checkBounds) validateBounds(displayObject);
 				i++;
 			}
 		}
 
-		protected function measure(children:Vector.<DisplayObject>):void
+		protected function getRectangle(i:int, element:DisplayObject):Rectangle
 		{
-
+			_measuredCell.x = (i % _columns) * _measuredCell.width;
+			_measuredCell.y = int(i / _columns) * _measuredCell.height;
+			return _measuredCell;
 		}
 
-		protected function getRectangle(index : int, element : DisplayObject) : Rectangle
-		{
-			throw new IllegalOperationError("method must be overriden")
-		}
-
-		protected function validateBounds(object:DisplayObject) : void
+		protected function validateBounds(object:DisplayObject):void
 		{
 			if (object.parent) {
 				var bounds:Rectangle = object.getRect(object.parent);
@@ -51,7 +52,7 @@ package ru.kashaya.view.components.layout {
 			}
 		}
 
-		protected function arrange(object:DisplayObject, r : Rectangle):void
+		protected function arrange(object:DisplayObject, r:Rectangle):void
 		{
 			switch (_alignType) {
 				case AlignType.LEFT:
