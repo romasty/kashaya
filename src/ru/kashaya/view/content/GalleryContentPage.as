@@ -1,55 +1,45 @@
 package ru.kashaya.view.content {
 	import flash.display.DisplayObject;
-	import flash.display.MovieClip;
-    import flash.display.SpreadMethod;
-    import flash.display.Sprite;
-
-    import flash.events.Event;
-
-    import flash.events.MouseEvent;
+	import flash.display.Sprite;
+	import flash.events.Event;
+	import flash.events.MouseEvent;
 	import flash.geom.Point;
 
-	import flash.ui.Mouse;
-
-    import mx.events.ModuleEvent;
-
-    import ru.kashaya.model.GalleryModel;
-    import ru.kashaya.model.IContentDataModel;
+	import ru.kashaya.model.GalleryModel;
+	import ru.kashaya.model.IContentDataModel;
 	import ru.kashaya.model.IModel;
 	import ru.kashaya.model.PictureDataModel;
-    import ru.kashaya.resources.Resources;
-	import ru.kashaya.view.components.layout.AlignType;
-	import ru.kashaya.view.components.layout.ILayout;
 	import ru.kashaya.view.components.layout.SimpleTileLayout;
-	import ru.kashaya.view.components.layout.TileLayout;
 	import ru.kashaya.view.components.scroll.ScrollBarComponentBase;
 	import ru.kashaya.view.components.scroll.ScrollContainerBase;
-	import ru.kashaya.view.controls.AbstractMenuButton;
 	import ru.kashaya.view.controls.KashayaScrollBar;
 	import ru.plod.core.service.getService;
+	import ru.plod.gui.layout.AlignType;
+	import ru.plod.gui.layout.ILayout;
 
 	public class GalleryContentPage extends Sprite implements IContentPage {
 
 
-        private const SIZE : int = 140;
+		private const SIZE:int = 140;
 
-        private var _data:GalleryModel;
+		private var _data:GalleryModel;
 
-        //private var _picsMask : Sprite;
-        private var _picsCont:Sprite;
-        private var _pics:Array = new Array();
-
-
-		private var _layout : ILayout = new SimpleTileLayout(4, 140, 140, AlignType.CENTER);
-
-		private var _container : ScrollContainerBase;
-		private var _scrollBar : ScrollBarComponentBase;
+		//private var _picsMask : Sprite;
+		private var _picsCont:Sprite;
+		private var _pics:Array = new Array();
 
 
-        public function GalleryContentPage() {
+		private var _layout:ILayout = new SimpleTileLayout(4, 140, 140, AlignType.CENTER);
 
-            createChildren();
-        }
+		private var _container:ScrollContainerBase;
+		private var _scrollBar:ScrollBarComponentBase;
+
+
+		public function GalleryContentPage()
+		{
+
+			createChildren();
+		}
 
 
 		public function get displayObject():DisplayObject
@@ -58,7 +48,7 @@ package ru.kashaya.view.content {
 		}
 
 		private function createChildren():void
-        {
+		{
 			_container = new ScrollContainerBase();
 			_container.width = SIZE * 4;
 			_container.height = SIZE * 2;
@@ -74,100 +64,97 @@ package ru.kashaya.view.content {
 
 			_picsCont = new Sprite();
 			_container.setContent(_picsCont);
-            //addChild(_picsCont);
+			//addChild(_picsCont);
 
-            /*_picsMask = new Sprite();
-            //addChild(_picsMask);
-            _picsMask.graphics.beginFill(0, .2);
-            _picsMask.graphics.drawRect(0, 0, SIZE * 3, SIZE *2);
-            _picsMask.graphics.endFill();
-            _picsMask.mouseEnabled = false;*/
+			/*_picsMask = new Sprite();
+			 //addChild(_picsMask);
+			 _picsMask.graphics.beginFill(0, .2);
+			 _picsMask.graphics.drawRect(0, 0, SIZE * 3, SIZE *2);
+			 _picsMask.graphics.endFill();
+			 _picsMask.mouseEnabled = false;*/
 
-            //createButtons();
-        }
+			//createButtons();
+		}
 
-        public function showContent(data:IContentDataModel):void {
+		public function showContent(data:IContentDataModel):void
+		{
 
-            _data = data as GalleryModel;
-            createGallery();
-            //updateButtonStatus();
-        }
-
-
-        private function createGallery():void {
-            var list:Vector.<IContentDataModel> = _data.getList();
-            for each(var picData:PictureDataModel in list) {
-                createPicture(picData);
-            }
-
-            updatePictures();
-			_scrollBar.relativeScrollerHeight = _container.height/_container.content.height;
-
-        }
+			_data = data as GalleryModel;
+			createGallery();
+			//updateButtonStatus();
+		}
 
 
-        private function createPicture(data:PictureDataModel):PictureView
-        {
-            var pic:PictureView = new PicPreview();
-            _picsCont.addChild(pic);
-            _pics.push(pic);
-            pic.showContent(data);
+		private function createGallery():void
+		{
+			var list:Vector.<IContentDataModel> = _data.getList();
+			for each(var picData:PictureDataModel in list) {
+				createPicture(picData);
+			}
 
-            pic.addEventListener(MouseEvent.CLICK, onClick);
-            pic.addEventListener(MouseEvent.MOUSE_OVER, onOver);
+			updatePictures();
+			_scrollBar.relativeScrollerHeight = _container.height / _container.content.height;
 
-            return pic;
-        }
+		}
 
 
-        private function updatePictures(overpic : PictureView = null):void {
+		private function createPicture(data:PictureDataModel):PictureView
+		{
+			var pic:PictureView = new PicPreview();
+			_picsCont.addChild(pic);
+			_pics.push(pic);
+			pic.showContent(data);
 
-            for each(var pic:PictureView in _pics) {
+			pic.addEventListener(MouseEvent.CLICK, onClick);
+			pic.addEventListener(MouseEvent.MOUSE_OVER, onOver);
 
-					if(overpic == pic) {
-						pic.setSize(110, 110);
-					} else {
-						var s: int = 100;
-						pic.setSize(s, s);
-					}
-					pic.visible = true;
+			return pic;
+		}
 
-            }
-			_layout.updateLayout(Vector.<DisplayObject>(_pics));
-        }
 
-        private function onClick(e : Event) : void
-        {
-            var pic : PictureView = e.currentTarget as PictureView;
-            var data : PictureDataModel = pic.data;
+		private function updatePictures(overpic:PictureView = null):void
+		{
+
+			for each(var pic:PictureView in _pics) {
+
+				if (overpic == pic) {
+					pic.setSize(110, 110);
+				} else {
+					var s:int = 100;
+					pic.setSize(s, s);
+				}
+				pic.visible = true;
+
+			}
+			_layout.arrange(Vector.<DisplayObject>(_pics));
+		}
+
+		private function onClick(e:Event):void
+		{
+			var pic:PictureView = e.currentTarget as PictureView;
+			var data:PictureDataModel = pic.data;
 
 			IModel(getService(IModel)).currentData = data;
-        }
+		}
 
 
+		private function onOver(e:Event):void
+		{
+			var pic:PictureView = e.currentTarget as PictureView;
+			updatePictures(pic);
+		}
 
 
-
-        private function onOver(e : Event) : void
-        {
-            var pic : PictureView = e.currentTarget as PictureView;
-            updatePictures(pic);
-        }
-
-
-
-
-
-        public function clear():void
-        {
-            for each(var pic:PictureView in _pics) {
-                pic.removeEventListener(MouseEvent.CLICK, onClick);
-                pic.removeEventListener(MouseEvent.MOUSE_OVER, onOver);
-                pic.clear();
-            }
-            _pics = new Array();
-            _data.currentIndex = 0;
-        }
+		public function clear():void
+		{
+			for each(var pic:PictureView in _pics) {
+				pic.removeEventListener(MouseEvent.CLICK, onClick);
+				pic.removeEventListener(MouseEvent.MOUSE_OVER, onOver);
+				pic.clear();
+			}
+			_pics = new Array();
+			_data.currentIndex = 0;
+		}
 
 		private function scrollBar_changeHandler(event:Event):void
 		{

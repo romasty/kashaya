@@ -1,7 +1,7 @@
 package ru.kashaya.view.menu {
 	import flash.display.DisplayObject;
 
-	import ru.kashaya.view.components.layout.ILayout;
+	import ru.plod.gui.layout.ILayout;
 
 	public class VerticalMenuLayout implements ILayout{
 
@@ -12,7 +12,7 @@ package ru.kashaya.view.menu {
 			_gap = gap;
 		}
 
-		public function updateLayout(items:Vector.<DisplayObject>):void
+		public function arrange(items:Vector.<DisplayObject>):void
 		{
             var i : int;
 

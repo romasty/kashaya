@@ -10,7 +10,7 @@ package ru.kashaya.view.menu {
     import ru.kashaya.model.IContentDataModel;
 	import ru.kashaya.model.IModel;
 	import ru.kashaya.view.IKashayaClassFactory;
-	import ru.kashaya.view.components.layout.ILayout;
+	import ru.plod.gui.layout.ILayout;
 	import ru.kashaya.view.controls.KashayaMenuButton;
 	import ru.plod.core.service.getService;
 
@@ -123,7 +123,7 @@ package ru.kashaya.view.menu {
 
         protected function alignButtons() : void
         {
-			_layout.updateLayout(_buttons);
+			_layout.arrange(_buttons);
         }
 
         public function updateButtnonStatus():void

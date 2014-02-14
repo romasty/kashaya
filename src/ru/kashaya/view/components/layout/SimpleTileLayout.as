@@ -9,6 +9,10 @@ package ru.kashaya.view.components.layout {
 	import flash.display.DisplayObject;
 	import flash.geom.Rectangle;
 
+	import ru.plod.gui.layout.AlignType;
+
+	import ru.plod.gui.layout.ILayout;
+
 	public class SimpleTileLayout implements ILayout {
 
 		protected var _alignType:String;
@@ -25,12 +29,12 @@ package ru.kashaya.view.components.layout {
 		}
 
 
-		public function updateLayout(children:Vector.<DisplayObject>):void
+		public function arrange(children:Vector.<DisplayObject>):void
 		{
 			var i:int;
 			for each(var displayObject:DisplayObject in children) {
 				var placementRect:Rectangle = getRectangle(i, displayObject);
-				arrange(displayObject, placementRect);
+				arrangeChild(displayObject, placementRect);
 				if (checkBounds) validateBounds(displayObject);
 				i++;
 			}
@@ -52,7 +56,7 @@ package ru.kashaya.view.components.layout {
 			}
 		}
 
-		protected function arrange(object:DisplayObject, r:Rectangle):void
+		protected function arrangeChild(object:DisplayObject, r:Rectangle):void
 		{
 			switch (_alignType) {
 				case AlignType.LEFT:

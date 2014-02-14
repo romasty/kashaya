@@ -1,13 +1,13 @@
 package ru.kashaya.view.menu {
 	import flash.display.DisplayObject;
 
-	import ru.kashaya.view.components.layout.ILayout;
+	import ru.plod.gui.layout.ILayout;
 
 	import ru.kashaya.view.controls.KSMenuButton;
 
 	public class HorizontalMenuLayout implements ILayout{
 
-		public function updateLayout(items:Vector.<DisplayObject>):void
+		public function arrange(items:Vector.<DisplayObject>):void
 		{
             var prevB : DisplayObject;
 
