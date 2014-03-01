@@ -19,12 +19,12 @@ package ru.kashaya.model {
         {
             super.parseData(xml);
 
-            previewUrl = Resources.PIC_PATH + xml.@preview.toXMLString();
+            previewUrl = Resources.PREVIEW_PATH + xml.@preview.toXMLString();
             picUrl = Resources.PIC_PATH + xml.@src.toXMLString();
 
 			//TODO: for test, remove
-			previewUrl = Resources.PIC_PATH + "hunnW_small.jpg";
-			picUrl = Resources.PIC_PATH + "hunnW.jpg";
+			/*previewUrl = Resources.PIC_PATH + "hunnW_small.jpg";
+			picUrl = Resources.PIC_PATH + "hunnW.jpg";*/
 
         }
     }
