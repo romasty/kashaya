@@ -4,16 +4,16 @@ package ru.kashaya.utils {
         {
             var k : int
 
-            while(source.indexOf("[br/]") != -1) {
+            /*while(source.indexOf("[br/]") != -1) {
                 source = source.replace("[br/]", "<br/>")
+            }*/
+			while(source.indexOf("[") != -1) {
+				source = source.replace("[", "<")
+			}
 
-                /*k++
-                if(k>1000) {
-                    break;
-                }*/
-
-                //trace("sssssssssssssssssssssssssssss", k)
-            }
+			while(source.indexOf("]") != -1) {
+				source = source.replace("]", ">")
+			}
 
             return source;
         }

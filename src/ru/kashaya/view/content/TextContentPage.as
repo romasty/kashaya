@@ -9,7 +9,9 @@ package ru.kashaya.view.content {
     import flash.text.TextFormat;
     import flash.utils.setTimeout;
 
-    import ru.kashaya.model.IContentDataModel;
+	import flashx.textLayout.formats.TextAlign;
+
+	import ru.kashaya.model.IContentDataModel;
     import ru.kashaya.model.TextDataModel;
     import ru.kashaya.resources.Resources;
 
@@ -49,10 +51,12 @@ package ru.kashaya.view.content {
             var tf : TextField = _txtCont.getChildByName("tf") as TextField;
             tf.selectable = true;
             tf.htmlText = textData.body;
+			tf.width = 580;
 
             var format : TextFormat = new TextFormat();
-            format.size = 14;
-            format.leading = 0;
+            format.size = 12;
+            format.leading = 4;
+			format.align = TextAlign.LEFT
             //format.align = "center";
 
             tf.setTextFormat(format);
