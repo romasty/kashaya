@@ -25,10 +25,10 @@
         </menu>
 
         <item id="0" type="pic" src="AliceW.jpg" preview="AliceW_small.jpg">
-            <title>О любви к пиву</title>
+            <title>"Алиса" Тима Бёртона</title>
         </item>
         <item id="0" type="pic" src="hawaii_coffeeW.jpg" preview="hawaii_coffeeW_small.jpg">
-            <title>О любви к пиву</title>
+            <title>Гавайский кофе</title>
         </item>
 
             <item id="0" type="pic" src="DragonDwarfW_big.jpg" preview="DragonDwarfW_small.jpg">
@@ -44,7 +44,7 @@
                 <title>Осень, для обложки сборника стихотворений</title>
             </item>
             <item id="4" type="pic" src="mermaid_W.jpg" preview="mermaid_W_small.jpg">
-                <title>Underwater gift</title>
+                <title>Русалочка</title>
             </item>
             <item id="5" type="pic" src="elf_W.jpg" preview="elf_W_small.jpg">
                 <title>Темный эльф</title>
@@ -74,7 +74,7 @@
                 <!--<title>Голова Аполлона; вектор</title>-->
             <!--</item>-->
             <item id="14" type="pic" src="zhukW.jpg" preview="ZhukW_small.jpg">
-                <title>Жук</title>
+                <title>Жук, иллюстрация для учебника биологии</title>
             </item>
             <item id="15" type="pic" src="foodW.jpg" preview="foodW_small.jpg">
                 <title>Еда; вектор</title>
@@ -100,26 +100,26 @@
         </menu>
 
         <item id="0" type="pic" src="HyasinthW.jpg" preview="HyasinthW_small.jpg">
-            <title>Dune by Dior; акварель</title>
+            <title>Гиацинт[br/]пастельные карандаши</title>
         </item>
             <item id="0" type="pic" src="Dune_W.jpg" preview="DuneW_small.jpg">
-                <title>Dune by Dior; акварель</title>
+                <title>Dune by Dior[br/]акварель</title>
             </item>
             <item id="1" type="pic" src="shoes_W.jpg" preview="shoes_W_small.jpg">
-                <title>Туфли; маркеры</title>
+                <title>Туфли[br/]маркеры</title>
             </item>
             <item id="2" type="pic" src="white_orchid_W.jpg" preview="white_orchidW_small.jpg">
-                <title>Белые орхидеи; карандаши, черный маркер</title>
+                <title>Белые орхидеи[br/]карандаши, черный маркер</title>
             </item>
 
             <item id="3" type="pic" src="givenchy_W_big.jpg" preview="GivenchyW_small.jpg">
-                <title>Givenchy inspiration; акварель</title>
+                <title>Вдохновение Givenchy[br/]акварель</title>
             </item>
             <item id="4" type="pic" src="PeachesWbig.jpg" preview="PeachesW_small.jpg">
-                <title>Персики; карандаши, черный маркер</title>
+                <title>Персики[br/]карандаши, черный маркер</title>
             </item>
             <item id="5" type="pic" src="flakonW.jpg" preview="flaconW_small.jpg">
-                <title>Свет в стекле; акварель</title>
+                <title>Свет в стекле[br/]акварель</title>
             </item>
             <!--<item id="6" type="pic" src="orchidsW.jpg" preview="orchidsW_small.jpg">-->
                 <!--<title>Орхидеи; акварель</title>-->
@@ -138,18 +138,18 @@
                 <btn locale="EN" skinClass="promDesignSkinBtn_EN"/>
         </menu>
 
-        <item id="7" type="pic" src="tsukatW.jpg" preview="tsukatW_small.jpg">
+        <item id="7" type="pic" src="tsukatW.jpg" preview="TsukatW_small.jpg">
             <title></title>
         </item>
 
         <item id="1" type="pic" src="Choko1W.jpg" preview="Choko1W_small.jpg">
-            <title>Проект Спа капсулы для домашнего использования</title>
+            <title>Фирменный стиль для брэнда Chokodelika</title>
         </item>
         <item id="1" type="pic" src="Choko2W.jpg" preview="Choko2W_small.jpg">
-            <title>Проект Спа капсулы для домашнего использования</title>
+            <title>Фирменный стиль для брэнда Chokodelika</title>
         </item>
         <item id="1" type="pic" src="hand_kremW.jpg" preview="hand_kremW_small.jpg">
-            <title>Проект Спа капсулы для домашнего использования</title>
+            <title>Упаковка серии кремов для рук</title>
         </item>
 
 
@@ -169,7 +169,7 @@
                 <title>Мебель для кафе *Цукат*</title>
             </item>
             <item id="6" type="pic" src="podvesW.jpg" preview="PodvesW_small.jpg">
-                <title>Эскиз комплекта украшений</title>
+                <title>Эскиз комплекта украшений из серебра и янтаря</title>
             </item>
     </item>
 
@@ -184,15 +184,15 @@
         </menu>
 
         <item id="0" type="pic" src="Emmy_infoW.jpg" preview="Emmi_infoW_small.jpg">
-            <title>Разработка логотипа для ветеринарной клиники *Забота*, варианты размещения лого на визитке
+            <title>Вариант дизайна инфографики
             </title>
         </item>
         <item id="0" type="pic" src="Dexter_info.jpg" preview="Dexter_infoW_small.jpg">
-            <title>Разработка логотипа для ветеринарной клиники *Забота*, варианты размещения лого на визитке
+            <title>Инфографика для Mail.ru Group по сериалу *Декстер*
             </title>
         </item>
         <item id="0" type="pic" src="Agent_infoW.jpg" preview="Agent_infoW_small.jpg">
-            <title>Разработка логотипа для ветеринарной клиники *Забота*, варианты размещения лого на визитке
+            <title>Вариант дизайна инфографики
             </title>
         </item>
             <item id="0" type="pic" src="zabotaW.jpg" preview="zabotaW_small.jpg">
@@ -236,16 +236,16 @@
         </menu>
 
         <item id="2" type="pic" src="VavW.jpg" preview="VavW_small.jpg">
-            <title>Скетчи к СПА капсуле, фломастеры Copic</title>
+            <title>Вилка и веер[br/]акварель</title>
         </item>
         <item id="3" type="pic" src="zefirkiW.jpg" preview="zefirkiW_small.jpg">
-            <title>Скетчи к СПА капсуле, фломастеры Copic</title>
+            <title>Зефир и кот[br/]маркеры Copic</title>
         </item>
             <item id="0" type="pic" src="DixW_big.jpg" preview="DixW_small.jpg">
                 <title>Кошачьи наброски</title>
             </item>
             <item id="1" type="pic" src="spascetchW.jpg" preview="SpascetchW_small.jpg">
-                <title>Скетчи к СПА капсуле, фломастеры Copic</title>
+                <title>Скетчи к СПА капсуле[br/] маркеры Copic</title>
             </item>
             <!--<item id="2" type="pic" src="mantikoraW.jpg" preview="mantikoraW_small.jpg">-->
                 <!--<title>Мантикора, карандаш</title>-->

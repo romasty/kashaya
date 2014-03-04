@@ -32,7 +32,7 @@ package ru.kashaya.model {
 
 		public function set currentData(value:IContentDataModel):void
 		{
-			if(_currentData != value) {
+			if(_currentData != value || value is PictureDataModel) {
 				_currentData = value;
 				dispatchEvent(new Event(Event.CHANGE));
 			}

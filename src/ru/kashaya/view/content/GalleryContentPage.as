@@ -24,7 +24,6 @@ package ru.kashaya.view.content {
 
 		private var _data:GalleryModel;
 
-		//private var _picsMask : Sprite;
 		private var _picsCont:Sprite;
 		private var _pics:Array = new Array();
 
@@ -37,8 +36,7 @@ package ru.kashaya.view.content {
 
 		public function GalleryContentPage()
 		{
-
-			createChildren();
+            createChildren();
 		}
 
 
@@ -64,16 +62,6 @@ package ru.kashaya.view.content {
 
 			_picsCont = new Sprite();
 			_container.setContent(_picsCont);
-			//addChild(_picsCont);
-
-			/*_picsMask = new Sprite();
-			 //addChild(_picsMask);
-			 _picsMask.graphics.beginFill(0, .2);
-			 _picsMask.graphics.drawRect(0, 0, SIZE * 3, SIZE *2);
-			 _picsMask.graphics.endFill();
-			 _picsMask.mouseEnabled = false;*/
-
-			//createButtons();
 		}
 
 		public function showContent(data:IContentDataModel):void
@@ -81,7 +69,6 @@ package ru.kashaya.view.content {
 
 			_data = data as GalleryModel;
 			createGallery();
-			//updateButtonStatus();
 		}
 
 
@@ -118,10 +105,10 @@ package ru.kashaya.view.content {
 			for each(var pic:PictureView in _pics) {
 
 				if (overpic == pic) {
-					pic.setSize(110, 110);
+					pic.setComponentSize(110, 110);
 				} else {
 					var s:int = 100;
-					pic.setSize(s, s);
+					pic.setComponentSize(s, s);
 				}
 				pic.visible = true;
 

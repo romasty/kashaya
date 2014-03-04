@@ -10,6 +10,8 @@ package ru.kashaya.view.components {
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
+	import flash.external.ExternalInterface;
+	import flash.utils.setTimeout;
 
 	import ru.kashaya.model.IContentDataModel;
 
@@ -45,15 +47,14 @@ package ru.kashaya.view.components {
 			_image = new PictureViewBig();
 			_image.x = 100;
 			_image.y = 50;
-			_image.setSize(80, 80);
+			_image.setComponentSize(80, 80);
 			_image.addEventListener(Event.CLOSE, closeHandler);
+			_image.addEventListener(Event.COMPLETE, loadCompleteHandler);
 			_image.showContent(data);
 
 			addChild(_locker);
 			addChild(_closeBtn);
 			addChild(_image);
-
-
 
 			resize();
 		}
@@ -61,6 +62,10 @@ package ru.kashaya.view.components {
 		private function closeHandler(e:Event = null):void
 		{
 			clear();
+
+			if(ExternalInterface.available) {
+				ExternalInterface.call("setFlashSize", true);
+			}
 		}
 
 		public function clear():void
@@ -75,13 +80,7 @@ package ru.kashaya.view.components {
 			removeChild(_image);
 		}
 
-		private function resize():void
-		{
-			if (stage == null || !_opened) return;
 
-			_closeBtn.y = 20;
-			_closeBtn.x = stage.stageWidth - _closeBtn.width - 20;
-		}
 
 		private function addedToStageHandler(event:Event):void
 		{
@@ -103,6 +102,82 @@ package ru.kashaya.view.components {
 		public function get displayObject():DisplayObject
 		{
 			return this;
+		}
+
+		private function loadCompleteHandler(event:Event):void
+		{
+			_image.addEventListener(Event.CHANGE, imagePinedChange);
+			var overBounds : Boolean = _image.originalWidth > stage.stageWidth || _image.originalHeight > stage.stageHeight;
+			_image.pinned = overBounds;
+			_image.pinnable = overBounds;
+			resize();
+			setTimeout(_image.redraw, 500);
+		}
+
+		private function imagePinedChange(event:Event):void
+		{
+			resize();
+		}
+
+
+		private function resize():void
+		{
+			if (stage == null || !_opened) return;
+
+			_closeBtn.y = 20;
+			_closeBtn.x = stage.stageWidth - _closeBtn.width - 20;
+
+			if(_image) {
+
+				var overBounds : Boolean = _image.originalWidth > stage.stageWidth || _image.originalHeight > stage.stageHeight;
+				_image.pinnable = overBounds;
+				if(_image.pinned) {
+					if(overBounds) {
+						resizeScaled();
+					} else {
+						resizeUnscaled();
+					}
+				} else {
+					resizeUnscaled();
+				}
+			}
+		}
+
+
+		private function resizeScaled() : void
+		{
+			var stageW : int = stage.stageWidth;
+			var stageH : int = stage.stageHeight - 30;
+
+			var scale : Number = Math.min(stageW/_image.originalWidth, stageH/_image.originalHeight );
+
+			var w : int = scale * _image.originalWidth;
+			var h : int = scale * _image.originalHeight;
+			_image.setComponentSize(w, h);
+			_image.setImageSize(w, h);
+
+			_image.x = .5 * (stageW - _image.width);
+			_image.y = .5 * (stageH - _image.height);
+
+			/*if(ExternalInterface.available) {
+				ExternalInterface.call("setFlashSize", true);
+			}*/
+		}
+
+		private function resizeUnscaled() : void
+		{
+			var stageW : int = stage.stageWidth;
+			var stageH : int = stage.stageHeight;
+
+			var overBounds : Boolean = _image.originalWidth > stageW || _image.originalHeight > stageH;
+			_image.setComponentSize(_image.originalWidth, _image.originalHeight);
+			_image.setImageSize(_image.originalWidth, _image.originalHeight);
+			_image.x = .5 * (stageW - _image.width);
+			_image.y =  overBounds ? 0 :.5 * (stageH - _image.height);
+
+			if(ExternalInterface.available && overBounds) {
+				ExternalInterface.call("setHeight", _image.originalHeight + 30);
+			}
 		}
 	}
 }

@@ -11,13 +11,9 @@ package ru.kashaya {
 	import ru.plod.core.service.ServiceManager;
 	import ru.plod.util.commands.MainQueue;
 
+	[SWF (backgroundColor="#222322")]
 	public class Main extends Sprite
     {
-
-
-        /*[Embed (source="/assets/preloder.swf", symbol="preloader")]
-        private var prelCl : Class;*/
-
         public function Main()
         {
             trace("fdgdfhdfhdfh");
