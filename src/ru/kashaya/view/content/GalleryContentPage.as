@@ -94,6 +94,7 @@ package ru.kashaya.view.content {
 
 			pic.addEventListener(MouseEvent.CLICK, onClick);
 			pic.addEventListener(MouseEvent.MOUSE_OVER, onOver);
+			pic.addEventListener(MouseEvent.MOUSE_OUT, onOut);
 
 			return pic;
 		}
@@ -131,12 +132,17 @@ package ru.kashaya.view.content {
 			updatePictures(pic);
 		}
 
+		private function onOut(e:Event):void
+		{
+			updatePictures(null);
+		}
 
 		public function clear():void
 		{
 			for each(var pic:PictureView in _pics) {
 				pic.removeEventListener(MouseEvent.CLICK, onClick);
 				pic.removeEventListener(MouseEvent.MOUSE_OVER, onOver);
+				pic.removeEventListener(MouseEvent.MOUSE_OUT, onOut);
 				pic.clear();
 			}
 			_pics = new Array();
@@ -145,7 +151,7 @@ package ru.kashaya.view.content {
 
 		private function scrollBar_changeHandler(event:Event):void
 		{
-			_container.scrollPosition = new Point(0, _scrollBar.scrollPosition);
+			_container.verticalScroll = _scrollBar.scrollPosition;
 		}
 	}
 }

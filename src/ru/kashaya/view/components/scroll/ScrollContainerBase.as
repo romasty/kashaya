@@ -15,12 +15,14 @@ package ru.kashaya.view.components.scroll {
 	import ru.kashaya.view.components.ComponentBase;
 	import ru.kashaya.view.components.helpers.DrawRectComponent;
 	import ru.kashaya.view.components.helpers.SolidFill;
+	import ru.plod.helpers.Diapason;
 
-	public class ScrollContainerBase extends ComponentBase{
+	public class ScrollContainerBase extends ComponentBase {
 
-		private var _content : Sprite;
-		protected var _mask : DrawRectComponent;
-		private var _scrollPosition : Point = new Point();
+		private var _content:Sprite;
+		protected var _mask:DrawRectComponent;
+		private var _horizontalDiapason = new Diapason();
+		private var _verticalDiapason = new Diapason();
 
 		public function ScrollContainerBase()
 		{
@@ -50,45 +52,55 @@ package ru.kashaya.view.components.scroll {
 			_mask.height = height;
 
 			//TODO:
-			var bounds : Rectangle = _content.getBounds(this);
-			_content.x = _scrollPosition.x * (width - _content.width);
-			_content.y = _scrollPosition.y * (height - _content.height);
+			var bounds:Rectangle = _content.getBounds(this);
+
+			_horizontalDiapason.change(0, width - _content.width);
+			_verticalDiapason.change(0, height - _content.height);
+
+			_content.x = _horizontalDiapason.value;
+			_content.y = _verticalDiapason.value;
 		}
 
-
-		public function get scrollPosition():Point
+		public function set horizontalScroll(value:Number):void
 		{
-			return _scrollPosition;
-		}
-
-		public function set scrollPosition(value:Point):void
-		{
-			if(value == null) throw new ArgumentError();
-			if(_scrollPosition.equals(value)) return;
-			_scrollPosition.x = value.x;
-			_scrollPosition.y = value.y;
-			if(_scrollPosition.x < 0 || !horizontalScrollAvailabe) _scrollPosition.x = 0;
-			if(_scrollPosition.y < 0 || !verticalScrollAvailabe) _scrollPosition.y = 0;
-			if(_scrollPosition.x > 1) _scrollPosition.x = 1;
-			if(_scrollPosition.y > 1) _scrollPosition.y = 1;
+			if (_horizontalDiapason.ratio == value || !horizontalScrollAvailabe) return;
+			_horizontalDiapason.ratio = value;
 			invalidate();
 			dispatchEvent(new Event(Event.CHANGE));
 		}
 
+		public function get horizontalScroll():Number
+		{
+			return _horizontalDiapason.ratio;
+		}
 
-		public function get horizontalScrollAvailabe() : Boolean
+		public function get horizontalScrollAvailabe():Boolean
 		{
 			return width < _content.width;
 		}
 
-		public function get verticalScrollAvailabe() : Boolean
+
+		public function set verticalScroll(value:Number):void
+		{
+			if (_verticalDiapason.ratio == value || !verticalScrollAvailabe) return;
+			_verticalDiapason.ratio = value;
+			invalidate();
+			dispatchEvent(new Event(Event.CHANGE));
+		}
+
+		public function get verticalScroll():Number
+		{
+			return _verticalDiapason.ratio;
+		}
+
+		public function get verticalScrollAvailabe():Boolean
 		{
 			return height < _content.height;
 		}
 
 
 		//TODO: refactor;
-		public function setContent(child : DisplayObject) : void
+		public function setContent(child:DisplayObject):void
 		{
 			_content.addChild(child);
 		}

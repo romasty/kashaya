@@ -13,22 +13,23 @@ package ru.kashaya.view.components.scroll {
 	import flash.utils.setTimeout;
 
 	import ru.kashaya.view.components.ComponentBase;
-	import ru.plod.helpers.ConfinedPosition;
+	import ru.plod.helpers.Diapason;
 
 	public class ScrollBarComponentBase extends ComponentBase {
 
 		protected var _scrollArea:Sprite;
 		protected var _scroller:Sprite;
+		protected var _scrollDiapason : Diapason = new Diapason();
 		protected var _relativeScrollerHeight : Number;
-
-		protected var _scrollSegment : ConfinedPosition;
-
+		private var _scrollAreaMouseDown : Boolean;
+		private var _scrollerDownMouseY : Number;
+		private var _scrollAreaMouseDownTimer : uint;
 
 		public function ScrollBarComponentBase()
 		{
-			_scrollSegment = new ConfinedPosition(0, 1);
 			addEventListener(Event.ADDED_TO_STAGE, addedToStageHandler);
 			addEventListener(Event.REMOVED_FROM_STAGE, removedFromStageHandler);
+			addEventListener(MouseEvent.MOUSE_WHEEL, mouseWheelHandler);
 		}
 
 		override protected function createChildren():void
@@ -53,24 +54,22 @@ package ru.kashaya.view.components.scroll {
 			_scrollArea.height = height;
 
 			_scroller.height =  _relativeScrollerHeight * height;
-			_scrollSegment.change(0, _scrollArea.height - _scroller.height);
-			_scroller.y = _scrollSegment.value;
+			_scrollDiapason.change(0, _scrollArea.height - _scroller.height);
+			_scroller.y = _scrollDiapason.value;
 		}
-
 
 		public function get scrollPosition():Number
 		{
-			return _scrollSegment.position;
+			return _scrollDiapason.ratio;
 		}
 
 		public function set scrollPosition(value:Number):void
 		{
-			if(value != _scrollSegment.position) {
-				_scrollSegment.position = value;
+			if(value != _scrollDiapason.ratio) {
+				_scrollDiapason.ratio = value;
 				dispatchEvent(new Event(Event.CHANGE));
 			}
 		}
-
 
 		public function set relativeScrollerHeight(value:Number):void
 		{
@@ -100,7 +99,7 @@ package ru.kashaya.view.components.scroll {
 
 
 
-		private var _scrollAreaMouseDown : Boolean;
+
 		private function scrollArea_mouseDownHandler(event:MouseEvent):void
 		{
 			_scrollAreaMouseDown = true;
@@ -114,7 +113,7 @@ package ru.kashaya.view.components.scroll {
 
 		private function scrollDown() : void
 		{
-			var ds : Number =  _scroller.height / _scrollSegment.length;
+			var ds : Number =  _scroller.height / _scrollDiapason.span;
 			scrollPosition += ds;
 			invalidate();
 
@@ -123,8 +122,8 @@ package ru.kashaya.view.components.scroll {
 
 		private function scrollUp() : void
 		{
-			var ds : Number =  _scroller.height / _scrollSegment.length;
-			scrollPosition -= ds;
+			var ds : Number =  _scroller.height / _scrollDiapason.span;
+			 scrollPosition -= ds;
 			invalidate();
 
 			if(_scrollAreaMouseDown && scrollPosition != 0) setTimeout(scrollUp, 100);
@@ -132,8 +131,7 @@ package ru.kashaya.view.components.scroll {
 
 
 
-		private var _scrollerDownMouseY : Number;
-		private var _scrollAreaMouseDownTimer : uint;
+
 
 		private function scroller_mouseDownHandler(event:MouseEvent):void
 		{
@@ -151,7 +149,7 @@ package ru.kashaya.view.components.scroll {
 
 		private function mouseMoveHandler(event:MouseEvent):void
 		{
-			scrollPosition = (_scrollArea.mouseY - _scrollerDownMouseY) / _scrollSegment.length;
+			scrollPosition = (_scrollArea.mouseY - _scrollerDownMouseY) / _scrollDiapason.span;
 			invalidate();
 		}
 
@@ -167,6 +165,13 @@ package ru.kashaya.view.components.scroll {
 		protected function createScrollArea() : Sprite
 		{
 			return new TestButton();
+		}
+
+		private function mouseWheelHandler(event:MouseEvent):void
+		{
+
+			scrollPosition -=.05 * event.delta;
+			invalidate();
 		}
 	}
 }
