@@ -29,7 +29,7 @@ package ru.kashaya.view.components.scroll {
 		{
 			addEventListener(Event.ADDED_TO_STAGE, addedToStageHandler);
 			addEventListener(Event.REMOVED_FROM_STAGE, removedFromStageHandler);
-			addEventListener(MouseEvent.MOUSE_WHEEL, mouseWheelHandler);
+			//addEventListener(MouseEvent.MOUSE_WHEEL, mouseWheelHandler);
 		}
 
 		override protected function createChildren():void
@@ -67,6 +67,7 @@ package ru.kashaya.view.components.scroll {
 		{
 			if(value != _scrollDiapason.ratio) {
 				_scrollDiapason.ratio = value;
+				invalidate();
 				dispatchEvent(new Event(Event.CHANGE));
 			}
 		}
@@ -115,7 +116,6 @@ package ru.kashaya.view.components.scroll {
 		{
 			var ds : Number =  _scroller.height / _scrollDiapason.span;
 			scrollPosition += ds;
-			invalidate();
 
 			if(_scrollAreaMouseDown && scrollPosition != 1) setTimeout(scrollDown, 100);
 		}
@@ -124,8 +124,6 @@ package ru.kashaya.view.components.scroll {
 		{
 			var ds : Number =  _scroller.height / _scrollDiapason.span;
 			 scrollPosition -= ds;
-			invalidate();
-
 			if(_scrollAreaMouseDown && scrollPosition != 0) setTimeout(scrollUp, 100);
 		}
 
@@ -150,7 +148,6 @@ package ru.kashaya.view.components.scroll {
 		private function mouseMoveHandler(event:MouseEvent):void
 		{
 			scrollPosition = (_scrollArea.mouseY - _scrollerDownMouseY) / _scrollDiapason.span;
-			invalidate();
 		}
 
 
@@ -167,12 +164,10 @@ package ru.kashaya.view.components.scroll {
 			return new TestButton();
 		}
 
-		private function mouseWheelHandler(event:MouseEvent):void
-		{
-
-			scrollPosition -=.05 * event.delta;
-			invalidate();
-		}
+//		private function mouseWheelHandler(event:MouseEvent):void
+//		{
+//			scrollPosition -=.05 * event.delta;
+//		}
 	}
 }
 

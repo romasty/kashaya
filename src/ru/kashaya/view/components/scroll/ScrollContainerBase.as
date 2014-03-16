@@ -6,6 +6,9 @@
  * To change this template use File | Settings | File Templates.
  */
 package ru.kashaya.view.components.scroll {
+	import caurina.transitions.Equations;
+	import caurina.transitions.Tweener;
+
 	import flash.display.DisplayObject;
 	import flash.display.Sprite;
 	import flash.events.Event;
@@ -58,7 +61,10 @@ package ru.kashaya.view.components.scroll {
 			_verticalDiapason.change(0, height - _content.height);
 
 			_content.x = _horizontalDiapason.value;
-			_content.y = _verticalDiapason.value;
+			//_content.y = _verticalDiapason.value;
+
+			Tweener.removeTweens(_content);
+			Tweener.addTween(_content, {y:_verticalDiapason.value, time:.3, transition:Equations.easeOutCubic})
 		}
 
 		public function set horizontalScroll(value:Number):void

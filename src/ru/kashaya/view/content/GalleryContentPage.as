@@ -4,6 +4,7 @@ package ru.kashaya.view.content {
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 	import flash.geom.Point;
+	import flash.utils.getTimer;
 
 	import ru.kashaya.model.GalleryModel;
 	import ru.kashaya.model.IContentDataModel;
@@ -20,7 +21,10 @@ package ru.kashaya.view.content {
 	public class GalleryContentPage extends Sprite implements IContentPage {
 
 
+
 		private const SIZE:int = 140;
+		private const COLUMNS : int = 4;
+		private const SHOWS_ROWS : int = 2;
 
 		private var _data:GalleryModel;
 
@@ -28,11 +32,14 @@ package ru.kashaya.view.content {
 		private var _pics:Array = new Array();
 
 
-		private var _layout:ILayout = new SimpleTileLayout(4, 140, 140, AlignType.CENTER);
+		private var _layout:ILayout = new SimpleTileLayout(COLUMNS, 140, 140, AlignType.CENTER);
 
 		private var _container:ScrollContainerBase;
 		private var _scrollBar:ScrollBarComponentBase;
 
+
+		private var _rowsNum : int;
+		private var _scrollStep : Number = 0;
 
 		public function GalleryContentPage()
 		{
@@ -48,12 +55,12 @@ package ru.kashaya.view.content {
 		private function createChildren():void
 		{
 			_container = new ScrollContainerBase();
-			_container.width = SIZE * 4;
-			_container.height = SIZE * 2;
+			_container.width = SIZE * COLUMNS;
+			_container.height = SIZE * SHOWS_ROWS;
 			addChild(_container);
 
 			_scrollBar = new KashayaScrollBar();
-			_scrollBar.x = SIZE * 4 + 10;
+			_scrollBar.x = SIZE * COLUMNS + 10;
 			_scrollBar.y = -15;
 			_scrollBar.height = 350;
 			addChild(_scrollBar);
@@ -62,6 +69,12 @@ package ru.kashaya.view.content {
 
 			_picsCont = new Sprite();
 			_container.setContent(_picsCont);
+
+			graphics.beginFill(0, 0);
+			graphics.drawRect(0, 0, SIZE * COLUMNS + 30, 350);
+			graphics.endFill();
+
+			addEventListener(MouseEvent.MOUSE_WHEEL, mouseWheelHandler);
 		}
 
 		public function showContent(data:IContentDataModel):void
@@ -82,6 +95,11 @@ package ru.kashaya.view.content {
 			updatePictures();
 			_scrollBar.relativeScrollerHeight = _container.height / _container.content.height;
 
+			_rowsNum  = int(list.length / COLUMNS);
+			if(list.length % COLUMNS > 0) _rowsNum +=1;
+			_scrollStep = 1 / (_rowsNum - SHOWS_ROWS + 1);
+
+			trace("createGallery", list.length, _rowsNum, _scrollStep)
 		}
 
 
@@ -147,11 +165,32 @@ package ru.kashaya.view.content {
 			}
 			_pics = new Array();
 			_data.currentIndex = 0;
+			removeEventListener(MouseEvent.MOUSE_WHEEL, mouseWheelHandler);
 		}
 
 		private function scrollBar_changeHandler(event:Event):void
 		{
-			_container.verticalScroll = _scrollBar.scrollPosition;
+			var scrollRows : int = _rowsNum - SHOWS_ROWS;
+			var curRowNum : int = int((scrollRows + 1) * _scrollBar.scrollPosition);
+			_container.verticalScroll = curRowNum / scrollRows;
+		}
+
+
+		private var _lastWheelTime : Number = 0;
+		private function mouseWheelHandler(event:MouseEvent):void
+		{
+			var time : Number = getTimer();
+			if(time - _lastWheelTime < 200) {
+				return;
+			}
+			_lastWheelTime = time;
+
+			var scrollRows : int = _rowsNum - SHOWS_ROWS;
+			var curRowNum : int = int((scrollRows) * _scrollBar.scrollPosition);
+
+			var dr : int = event.delta / Math.abs(event.delta);
+
+			_scrollBar.scrollPosition = (curRowNum - dr) / scrollRows;
 		}
 	}
 }

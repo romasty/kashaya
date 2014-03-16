@@ -51,12 +51,12 @@ package ru.kashaya.view.content {
             var tf : TextField = _txtCont.getChildByName("tf") as TextField;
             tf.selectable = true;
             tf.htmlText = textData.body;
-			tf.width = 580;
+			tf.width = 500;
 
             var format : TextFormat = new TextFormat();
             format.size = 12;
             format.leading = 4;
-			format.align = TextAlign.LEFT
+			format.align = TextAlign.JUSTIFY
             //format.align = "center";
 
             tf.setTextFormat(format);
